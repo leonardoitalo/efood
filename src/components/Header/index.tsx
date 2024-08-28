@@ -6,7 +6,7 @@ import {
   HeaderTitle,
 } from './styles';
 
-const Header = ({ restaurantType, restaurantTitle, img, alt }: IHeader) => {
+const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
   return (
     <>
       <HeaderContainer>
@@ -14,13 +14,13 @@ const Header = ({ restaurantType, restaurantTitle, img, alt }: IHeader) => {
           <HeaderTitle>Restaurantes</HeaderTitle>
         </div>
         <div>
-          <img src={img} alt={alt} />
+          <img src="imgs/logo.png" alt="logo efood" />
         </div>
         <div>
           <Cart>0 produto(s) no carrinho</Cart>
         </div>
       </HeaderContainer>
-      <HeroRestaurantContainer $bgImg="imgs/image2.png">
+      <HeroRestaurantContainer $bgImg={img}>
         <h1>{restaurantType}</h1>
         <h2>{restaurantTitle}</h2>
       </HeroRestaurantContainer>

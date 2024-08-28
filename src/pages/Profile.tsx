@@ -4,7 +4,11 @@ import ProductsList from 'components/ProductsList';
 const Profile = () => {
   return (
     <>
-      <Header />
+      <Header
+        restaurantTitle="La Dolce Vita Trattoria"
+        restaurantType="Italiana"
+        img="imgs/image2.png"
+      />
       <ProductsList />
     </>
   );
