@@ -20,8 +20,8 @@ const Header = () => {
         </div>
       </HeaderContainer>
       <HeroRestaurantContainer $bgImg="imgs/image2.png">
-        <h5>Italiana</h5>
-        <h6>La Dolce Vita Trattoria</h6>
+        <h1>Italiana</h1>
+        <h2>La Dolce Vita Trattoria</h2>
       </HeroRestaurantContainer>
     </>
   );

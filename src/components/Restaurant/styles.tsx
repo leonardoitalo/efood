@@ -56,7 +56,7 @@ export const Tag = styled.span`
   height: fit-content;
 `;
 
-export const InfoTitle = styled.h5`
+export const InfoTitle = styled.h3`
   font-size: 18px;
   font-weight: 700;
 `;

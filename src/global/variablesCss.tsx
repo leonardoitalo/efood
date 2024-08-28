@@ -4,3 +4,7 @@ export const colors = {
   beigeDark: '#FFEBD9',
   white: '#FFFFFF',
 };
+
+export const sizes = {
+  lineHeight: '1em',
+};

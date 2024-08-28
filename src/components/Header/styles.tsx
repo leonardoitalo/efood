@@ -34,17 +34,17 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
     z-index: 1;
   }
 
-  h5,
-  h6 {
+  h1,
+  h2 {
     z-index: 2;
     font-size: 2rem;
   }
 
-  h5 {
+  h1 {
     font-weight: 100;
   }
 
-  h6 {
+  h2 {
     font-weight: 900;
   }
 `;
