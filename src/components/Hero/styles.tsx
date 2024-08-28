@@ -11,7 +11,7 @@ export const HeroContainer = styled.div`
   background-image: url('imgs/Vector.png');
 `;
 
-export const Title = styled.p`
+export const HeroTitle = styled.p`
   color: ${colors.pink};
   font-size: 36px;
   font-weight: 900;
