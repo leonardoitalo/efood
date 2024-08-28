@@ -1,3 +1,4 @@
+import { IHeader } from 'interfaces/IHeader';
 import {
   Cart,
   HeaderContainer,
@@ -5,7 +6,7 @@ import {
   HeaderTitle,
 } from './styles';
 
-const Header = () => {
+const Header = ({ restaurantType, restaurantTitle, img, alt }: IHeader) => {
   return (
     <>
       <HeaderContainer>
@@ -13,15 +14,15 @@ const Header = () => {
           <HeaderTitle>Restaurantes</HeaderTitle>
         </div>
         <div>
-          <img src="imgs/logo.png" alt="" />
+          <img src={img} alt={alt} />
         </div>
         <div>
           <Cart>0 produto(s) no carrinho</Cart>
         </div>
       </HeaderContainer>
       <HeroRestaurantContainer $bgImg="imgs/image2.png">
-        <h1>Italiana</h1>
-        <h2>La Dolce Vita Trattoria</h2>
+        <h1>{restaurantType}</h1>
+        <h2>{restaurantTitle}</h2>
       </HeroRestaurantContainer>
     </>
   );

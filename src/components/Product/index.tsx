@@ -1,3 +1,4 @@
+import { IProduct } from 'interfaces/IProduct';
 import {
   PoductText,
   ProductButton,
@@ -6,18 +7,15 @@ import {
   ProductTitle,
 } from './styles';
 
-const Product = () => {
+const Product = ({ title, text, img, alt }: IProduct) => {
   return (
     <ProductContainer>
       <div>
-        <img src="imgs/image3.png" alt="" />
+        <img src={img} alt={alt} />
       </div>
       <ProductInfo>
-        <ProductTitle>Pizza Marguerita</ProductTitle>
-        <PoductText>
-          A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-          manjericão fresco e um toque de azeite. Sabor e simplicidade!
-        </PoductText>
+        <ProductTitle>{title}</ProductTitle>
+        <PoductText>{text}</PoductText>
         <ProductButton>Adicionar ao carrinho</ProductButton>
       </ProductInfo>
     </ProductContainer>

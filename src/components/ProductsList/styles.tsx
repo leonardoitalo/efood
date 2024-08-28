@@ -7,5 +7,5 @@ export const ProductListContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 32px;
-  padding-top: 56px;
+  padding: 56px 0 120px 0;
 `;
