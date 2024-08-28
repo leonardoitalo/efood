@@ -11,6 +11,7 @@ import {
   InfoTitle,
   Highlighted,
 } from './styles';
+import { useNavigate } from 'react-router-dom';
 
 const Restaurant = ({
   title,
@@ -19,6 +20,12 @@ const Restaurant = ({
   highlighted,
   rating,
 }: IRestaurant) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/profile');
+  };
+
   return (
     <RestaurantContainer>
       <ImgContainer $bgImg="imgs/imagem.png">
@@ -36,7 +43,7 @@ const Restaurant = ({
           </Rating>
         </InfoHeader>
         <InfoText>{text}</InfoText>
-        <InfoButton>Saiba mais</InfoButton>
+        <InfoButton onClick={handleClick}>Saiba mais</InfoButton>
       </InfoContainer>
     </RestaurantContainer>
   );
