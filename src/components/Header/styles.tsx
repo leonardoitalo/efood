@@ -1,5 +1,6 @@
 import { colors } from 'global/variablesCss';
 import { IContainerImgProps } from 'interfaces/IContainerImgProps';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
@@ -49,12 +50,13 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   }
 `;
 
-export const HeaderTitle = styled.h5`
+export const HeaderTitle = styled(Link)`
   font-size: 1.13rem;
   font-weight: 900;
   line-height: 1.2rem;
   text-align: center;
   color: ${colors.pink};
+  cursor: pointer;
 `;
 
 export const Cart = styled.span`

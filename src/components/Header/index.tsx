@@ -11,7 +11,7 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
     <>
       <HeaderContainer>
         <div>
-          <HeaderTitle>Restaurantes</HeaderTitle>
+          <HeaderTitle to={'/'}>Restaurantes</HeaderTitle>
         </div>
         <div>
           <img src="imgs/logo.png" alt="logo efood" />
