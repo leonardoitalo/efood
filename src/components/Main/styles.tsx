@@ -1,7 +1,7 @@
 import { colors } from 'global/variablesCss';
 import styled from 'styled-components';
 
-export const ContainerMain = styled.main`
+export const MainContainer = styled.main`
   padding: 120px 0px;
   background-color: ${colors.beige};
   display: flex;

@@ -2,7 +2,7 @@ import { colors } from 'global/variablesCss';
 import { IContainerImgProps } from 'interfaces/IContainerImgProps';
 import styled from 'styled-components';
 
-export const ContainerHeader = styled.header`
+export const HeaderContainer = styled.header`
   height: 180px;
   background-image: url('imgs/Vector.png');
   display: flex;
@@ -10,7 +10,7 @@ export const ContainerHeader = styled.header`
   align-items: center;
 `;
 
-export const ContainerHeroRestaurant = styled.div<IContainerImgProps>`
+export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   position: relative;
   background-image: url(${(props) => props.$bgImg});
   background-size: cover;
@@ -49,7 +49,7 @@ export const ContainerHeroRestaurant = styled.div<IContainerImgProps>`
   }
 `;
 
-export const TitleHeader = styled.h5`
+export const HeaderTitle = styled.h5`
   font-size: 1.13rem;
   font-weight: 900;
   line-height: 1.2rem;

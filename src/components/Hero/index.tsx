@@ -1,13 +1,13 @@
-import { ContainerHero, Title } from './styles';
+import { HeroContainer, Title } from './styles';
 
 const Hero = () => {
   return (
-        <ContainerHero>
+    <HeroContainer>
       <img src="imgs/logo.png" alt="" />
       <Title>
         Viva experiências gastronômicas <br /> no conforto da sua casa
       </Title>
-    </ContainerHero>
+    </HeroContainer>
   );
 };
 

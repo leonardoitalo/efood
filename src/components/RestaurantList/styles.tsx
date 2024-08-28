@@ -2,14 +2,14 @@ import { colors } from 'global/variablesCss';
 import { IContainerImgProps } from 'interfaces/IContainerImgProps';
 import styled from 'styled-components';
 
-export const ContainerRestaurant = styled.div`
+export const RestaurantContainer = styled.div`
   width: 488px;
   height: 398px;
   padding: 8px;
   color: ${colors.pink};
 `;
 
-export const ContainerImg = styled.div<IContainerImgProps>`
+export const ImgContainer = styled.div<IContainerImgProps>`
   background-image: url(${(props) => props.$bgImg});
   background-size: cover;
   background-position: center;
@@ -20,7 +20,7 @@ export const ContainerImg = styled.div<IContainerImgProps>`
   gap: 8px;
 `;
 
-export const ContainerInfo = styled.div`
+export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -29,7 +29,7 @@ export const ContainerInfo = styled.div`
   gap: 16px;
 `;
 
-export const HeaderInfo = styled.div`
+export const InfoHeader = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
@@ -56,12 +56,12 @@ export const Tag = styled.span`
   height: fit-content;
 `;
 
-export const TitleInfo = styled.h5`
+export const InfoTitle = styled.h5`
   font-size: 18px;
   font-weight: 700;
 `;
 
-export const TextInfo = styled.p`
+export const InfoText = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
@@ -72,7 +72,7 @@ export const Rating = styled.div`
   display: flex;
   align-items: center;
 `;
-export const ButtonInfo = styled.button`
+export const InfoButton = styled.button`
   font-size: 14px;
   font-weight: 700;
   line-height: 16.41px;

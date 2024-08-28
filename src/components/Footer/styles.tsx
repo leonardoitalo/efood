@@ -1,7 +1,7 @@
 import { colors } from 'global/variablesCss';
 import styled from 'styled-components';
 
-export const ContainerFooter = styled.footer`
+export const FooterContainer = styled.footer`
   width: auto;
   height: 298px;
   background-color: ${colors.beigeDark};
@@ -12,12 +12,12 @@ export const ContainerFooter = styled.footer`
   align-items: center;
 `;
 
-export const ContainerLogos = styled.div`
+export const LogosContainer = styled.div`
   display: flex;
   gap: 8px;
 `;
 
-export const TextFooter = styled.p`
+export const FooterText = styled.p`
   margin-top: 2.5rem;
   font-size: 1em;
   font-weight: 400;

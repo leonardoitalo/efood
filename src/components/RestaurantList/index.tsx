@@ -1,38 +1,38 @@
 import { IRestaurant } from 'interfaces/IRestaurant';
 import {
-  ButtonInfo,
-  ContainerImg,
-  ContainerInfo,
-  ContainerRestaurant,
-  HeaderInfo,
+  InfoButton,
+  ImgContainer,
+  InfoContainer,
+  RestaurantContainer,
+  InfoHeader,
   Rating,
   Tag,
-  TextInfo,
-  TitleInfo,
+  InfoText,
+  InfoTitle,
 } from './styles';
 
 const RestaurantList = ({ title, text, tags, rating }: IRestaurant) => {
   return (
-    <ContainerRestaurant>
-      <ContainerImg $bgImg="imgs/imagem.png">
+    <RestaurantContainer>
+      <ImgContainer $bgImg="imgs/imagem.png">
         {tags.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
         ))}
-      </ContainerImg>
-      <ContainerInfo>
-        <HeaderInfo>
-          <TitleInfo>{title}</TitleInfo>
+      </ImgContainer>
+      <InfoContainer>
+        <InfoHeader>
+          <InfoTitle>{title}</InfoTitle>
           <Rating>
             <span>{rating}</span>
             <div>
               <img src="imgs/estrela.png" alt="" />
             </div>
           </Rating>
-        </HeaderInfo>
-        <TextInfo>{text}</TextInfo>
-        <ButtonInfo>Saiba mais</ButtonInfo>
-      </ContainerInfo>
-    </ContainerRestaurant>
+        </InfoHeader>
+        <InfoText>{text}</InfoText>
+        <InfoButton>Saiba mais</InfoButton>
+      </InfoContainer>
+    </RestaurantContainer>
   );
 };
 

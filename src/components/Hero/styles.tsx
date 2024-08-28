@@ -1,7 +1,7 @@
 import { colors } from 'global/variablesCss';
 import styled from 'styled-components';
 
-export const ContainerHero = styled.div`
+export const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

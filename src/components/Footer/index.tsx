@@ -1,12 +1,12 @@
-import { ContainerFooter, ContainerLogos, TextFooter } from './styles';
+import { FooterContainer, LogosContainer, FooterText } from './styles';
 
 const Footer = () => {
   return (
-    <ContainerFooter>
+    <FooterContainer>
       <div>
         <img src="imgs/logo.png" alt="" />
       </div>
-      <ContainerLogos>
+      <LogosContainer>
         <a href="">
           <img src="imgs/instagram-round.png" alt="Instagram logo" />
         </a>
@@ -16,13 +16,13 @@ const Footer = () => {
         <a href="">
           <img src="imgs/twitter-round.png" alt="Twitter logo" />
         </a>
-      </ContainerLogos>
-      <TextFooter>
+      </LogosContainer>
+      <FooterText>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade <br /> dos produtos é toda do
         estabelecimento contratado.{' '}
-      </TextFooter>
-    </ContainerFooter>
+      </FooterText>
+    </FooterContainer>
   );
 };
 

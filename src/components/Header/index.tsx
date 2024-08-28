@@ -1,16 +1,16 @@
 import {
   Cart,
-  ContainerHeader,
-  ContainerHeroRestaurant,
-  TitleHeader,
+  HeaderContainer,
+  HeroRestaurantContainer,
+  HeaderTitle,
 } from './styles';
 
 const Header = () => {
   return (
     <>
-      <ContainerHeader>
+      <HeaderContainer>
         <div>
-          <TitleHeader>Restaurantes</TitleHeader>
+          <HeaderTitle>Restaurantes</HeaderTitle>
         </div>
         <div>
           <img src="imgs/logo.png" alt="" />
@@ -18,11 +18,11 @@ const Header = () => {
         <div>
           <Cart>0 produto(s) no carrinho</Cart>
         </div>
-      </ContainerHeader>
-      <ContainerHeroRestaurant $bgImg="imgs/image2.png">
+      </HeaderContainer>
+      <HeroRestaurantContainer $bgImg="imgs/image2.png">
         <h5>Italiana</h5>
         <h6>La Dolce Vita Trattoria</h6>
-      </ContainerHeroRestaurant>
+      </HeroRestaurantContainer>
     </>
   );
 };
