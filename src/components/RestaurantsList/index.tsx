@@ -1,9 +1,9 @@
-import Restaurant from 'components/RestaurantList';
-import { MainContainer } from './styles';
+import Restaurant from 'components/Restaurant';
+import { RestaurantsListContainer } from './styles';
 
-const Main = () => {
+const RestaurantsList = () => {
   return (
-    <MainContainer>
+    <RestaurantsListContainer>
       <Restaurant
         title={'Hioki Sushi'}
         rating={4.9}
@@ -36,8 +36,8 @@ const Main = () => {
           'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
         }
       />
-    </MainContainer>
+    </RestaurantsListContainer>
   );
 };
 
-export default Main;
+export default RestaurantsList;

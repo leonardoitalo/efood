@@ -11,7 +11,7 @@ import {
   InfoTitle,
 } from './styles';
 
-const RestaurantList = ({ title, text, tags, rating }: IRestaurant) => {
+const Restaurant = ({ title, text, tags, rating }: IRestaurant) => {
   return (
     <RestaurantContainer>
       <ImgContainer $bgImg="imgs/imagem.png">
@@ -36,4 +36,4 @@ const RestaurantList = ({ title, text, tags, rating }: IRestaurant) => {
   );
 };
 
-export default RestaurantList;
+export default Restaurant;
