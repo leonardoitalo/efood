@@ -1,6 +1,7 @@
 export interface IRestaurant {
   title: string;
   text: string;
-  tags: string[];
+  type: string;
+  highlighted?: boolean;
   rating: number;
 }

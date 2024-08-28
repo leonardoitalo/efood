@@ -45,7 +45,7 @@ export const InfoHeader = styled.div`
   }
 `;
 
-export const Tag = styled.span`
+export const Type = styled.span`
   font-size: 12px;
   font-weight: 700;
   line-height: 14.06px;
@@ -55,6 +55,8 @@ export const Tag = styled.span`
   padding: 6px 4px;
   height: fit-content;
 `;
+
+export const Highlighted = styled(Type)``;
 
 export const InfoTitle = styled.h3`
   font-size: 18px;

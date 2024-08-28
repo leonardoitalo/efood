@@ -6,18 +6,24 @@ import {
   RestaurantContainer,
   InfoHeader,
   Rating,
-  Tag,
+  Type,
   InfoText,
   InfoTitle,
+  Highlighted,
 } from './styles';
 
-const Restaurant = ({ title, text, tags, rating }: IRestaurant) => {
+const Restaurant = ({
+  title,
+  text,
+  type,
+  highlighted,
+  rating,
+}: IRestaurant) => {
   return (
     <RestaurantContainer>
       <ImgContainer $bgImg="imgs/imagem.png">
-        {tags.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
-        ))}
+        <Type>{type}</Type>
+        {highlighted ? <Highlighted>Destaque da Semana</Highlighted> : ''}
       </ImgContainer>
       <InfoContainer>
         <InfoHeader>
