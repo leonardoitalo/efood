@@ -13,7 +13,8 @@ export const Overlay = styled.div`
   align-items: center;
 `;
 
-export const Modal = styled.div`
+export const ModalContainer = styled.div`
+  position: relative;
   width: 1024px;
   height: 344px;
   background-color: ${colors.pink};
@@ -22,6 +23,7 @@ export const Modal = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   gap: 24px;
+  align-content: flex-start;
 `;
 
 export const ModalImage = styled.div`
@@ -60,4 +62,11 @@ export const ModalText = styled.p`
   line-height: 22px;
   text-align: left;
   max-width: 656px;
+`;
+
+export const CloseButton = styled.img`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
 `;
