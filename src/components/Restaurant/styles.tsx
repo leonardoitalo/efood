@@ -1,4 +1,4 @@
-import { colors } from 'global/variablesCss';
+import { colors } from 'global/styles/variablesCss';
 import { IContainerImgProps } from 'interfaces/IContainerImgProps';
 import styled from 'styled-components';
 

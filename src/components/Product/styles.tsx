@@ -1,4 +1,4 @@
-import { colors, sizes } from 'global/variablesCss';
+import { colors, sizes } from 'global/styles/variablesCss';
 import styled from 'styled-components';
 
 export const ProductContainer = styled.div`

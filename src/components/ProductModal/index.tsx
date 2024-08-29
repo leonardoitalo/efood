@@ -1,4 +1,4 @@
-import { ButtonBeige } from 'global/GlobalStyledComponents';
+import { ButtonBeige } from 'global/styles/GlobalStyledComponents';
 import ReactModal from 'react-modal';
 import {
   Overlay,
@@ -9,7 +9,7 @@ import {
   ModalContainer,
   CloseButton,
 } from './stylesModal';
-import formatPrice from 'utils/formatPrice';
+import formatPrice from 'global/utils/formatPrice';
 import { IProductModal } from 'interfaces/IProductModal';
 
 const rootElement =

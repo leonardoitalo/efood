@@ -7,7 +7,7 @@ import {
 } from './styles';
 import { useState } from 'react';
 
-import { ButtonBeige } from 'global/GlobalStyledComponents';
+import { ButtonBeige } from 'global/styles/GlobalStyledComponents';
 import ProductModal from 'components/ProductModal';
 
 const Product = ({ title, text, img, alt }: IProduct) => {

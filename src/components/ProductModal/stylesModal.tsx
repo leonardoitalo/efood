@@ -1,4 +1,4 @@
-import { colors } from 'global/variablesCss';
+import { colors } from 'global/styles/variablesCss';
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
