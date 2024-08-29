@@ -23,6 +23,7 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   justify-content: space-between;
   padding: 25px 0 32px 172px;
   color: ${colors.white};
+  z-index: 0;
 
   &::before {
     content: '';

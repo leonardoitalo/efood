@@ -31,12 +31,3 @@ export const PoductText = styled.p`
   line-height: 22px;
   text-align: left;
 `;
-
-export const ProductButton = styled.button`
-  background-color: ${colors.beigeDark};
-  color: ${colors.pink};
-  border: 0;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 4px 0;
-`;
