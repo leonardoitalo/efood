@@ -7,8 +7,9 @@ export const HeaderContainer = styled.header`
   height: 180px;
   background-image: url('imgs/Vector.png');
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 12.5vw 0 12.5vw;
 `;
 
 export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
@@ -21,7 +22,7 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 25px 0 32px 172px;
+  padding: 25px 0 32px 12.5vw;
   color: ${colors.white};
 
   &::before {
