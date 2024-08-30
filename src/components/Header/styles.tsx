@@ -1,4 +1,4 @@
-import { colors } from 'global/variablesCss';
+import { colors } from 'global/styles/variablesCss';
 import { IContainerImgProps } from 'interfaces/IContainerImgProps';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -24,6 +24,7 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   justify-content: space-between;
   padding: 25px 0 32px 12.5vw;
   color: ${colors.white};
+  z-index: 0;
 
   &::before {
     content: '';

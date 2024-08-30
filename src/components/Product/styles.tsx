@@ -1,4 +1,4 @@
-import { colors, sizes } from 'global/variablesCss';
+import { colors, sizes } from 'global/styles/variablesCss';
 import styled from 'styled-components';
 
 export const ProductContainer = styled.div`
@@ -30,13 +30,4 @@ export const PoductText = styled.p`
   font-weight: 400;
   line-height: 22px;
   text-align: left;
-`;
-
-export const ProductButton = styled.button`
-  background-color: ${colors.beigeDark};
-  color: ${colors.pink};
-  border: 0;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 4px 0;
 `;
