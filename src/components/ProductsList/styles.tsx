@@ -4,8 +4,8 @@ export const ProductListContainer = styled.div`
   display: flex;
   align-content: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 32px;
-  padding: 56px 0 120px 0;
+  gap: 2.3vw;
+  padding: 56px 12.5vw 120px 12.5vw;
 `;
