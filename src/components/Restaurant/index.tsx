@@ -14,6 +14,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const Restaurant = ({
+  id,
   titulo,
   capa,
   descricao,
@@ -24,7 +25,7 @@ const Restaurant = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/profile');
+    navigate(`/restaurant/${id}`);
   };
 
   return (

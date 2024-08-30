@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 
-export interface IProductModal {
+export interface IDisheModal {
   isOpen: boolean;
   onClose: MouseEventHandler<HTMLImageElement>;
   img: string;

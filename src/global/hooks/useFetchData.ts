@@ -10,6 +10,7 @@ const useFetchData = <T>(url: string) => {
       try {
         const response = await fetch(url);
         const result = await response.json();
+        console.log(result);
         setData(result);
       } catch (error) {
         setError(error as Error);

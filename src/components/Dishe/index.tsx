@@ -1,16 +1,11 @@
-import { IProduct } from 'interfaces/IProduct';
-import {
-  PoductText,
-  ProductContainer,
-  ProductInfo,
-  ProductTitle,
-} from './styles';
+import { IDishe } from 'interfaces/IDishe';
+import { DisheText, DisheContainer, DisheInfo, DisheTitle } from './styles';
 import { useState } from 'react';
 
 import { ButtonBeige } from 'global/styles/GlobalStyledComponents';
-import ProductModal from 'components/ProductModal';
+import DisheModal from 'components/DisheModal';
 
-const Product = ({ title, text, img, alt }: IProduct) => {
+const Dishe = ({ nome, descricao, foto, alt }: IDishe) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleOpen = () => {
@@ -23,15 +18,15 @@ const Product = ({ title, text, img, alt }: IProduct) => {
 
   return (
     <>
-      <ProductContainer>
+      <DisheContainer>
         <div>
-          <img src={img} alt={alt} />
+          <img src={foto} alt={alt} />
         </div>
-        <ProductInfo>
-          <ProductTitle>{title}</ProductTitle>
-          <PoductText>{text}</PoductText>
+        <DisheInfo>
+          <DisheTitle>{nome}</DisheTitle>
+          <DisheText>{descricao}</DisheText>
           <ButtonBeige onClick={handleOpen}>Adicionar ao carrinho</ButtonBeige>
-          <ProductModal
+          <DisheModal
             isOpen={showModal}
             onClose={handleClose}
             img={'imgs/image4.png'}
@@ -42,10 +37,10 @@ const Product = ({ title, text, img, alt }: IProduct) => {
             portion={'2 a 3 pessoas'}
             price={69.9}
           />
-        </ProductInfo>
-      </ProductContainer>
+        </DisheInfo>
+      </DisheContainer>
     </>
   );
 };
 
-export default Product;
+export default Dishe;

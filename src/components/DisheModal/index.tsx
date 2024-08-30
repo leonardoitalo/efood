@@ -10,12 +10,12 @@ import {
   CloseButton,
 } from './stylesModal';
 import formatPrice from 'global/utils/formatPrice';
-import { IProductModal } from 'interfaces/IProductModal';
+import { IDisheModal } from 'interfaces/IDisheModal';
 
 const rootElement =
   document.getElementById('root') || document.createElement('div');
 
-const ProductModal = ({
+const DisheModal = ({
   isOpen,
   onClose,
   img,
@@ -23,7 +23,7 @@ const ProductModal = ({
   text,
   portion,
   price,
-}: IProductModal) => {
+}: IDisheModal) => {
   return (
     <ReactModal
       appElement={rootElement}
@@ -61,4 +61,4 @@ const ProductModal = ({
   );
 };
 
-export default ProductModal;
+export default DisheModal;

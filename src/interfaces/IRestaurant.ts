@@ -1,3 +1,5 @@
+import { IDishe } from './IDishe';
+
 export interface IRestaurant {
   id?: number;
   titulo: string;
@@ -6,4 +8,5 @@ export interface IRestaurant {
   tipo: string;
   destacado?: boolean;
   avaliacao: number;
+  cardapio: IDishe[];
 }

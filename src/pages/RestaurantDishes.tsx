@@ -1,7 +1,7 @@
 import Header from 'components/Header';
-import ProductsList from 'components/ProductsList';
+import DishesList from 'components/DishesList';
 
-const Profile = () => {
+const RestaurantDishes = () => {
   return (
     <>
       <Header
@@ -9,9 +9,9 @@ const Profile = () => {
         restaurantType="Italiana"
         img="imgs/image2.png"
       />
-      <ProductsList />
+      <DishesList />
     </>
   );
 };
 
-export default Profile;
+export default RestaurantDishes;
