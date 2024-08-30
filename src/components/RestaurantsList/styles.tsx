@@ -2,7 +2,7 @@ import { colors } from 'global/styles/variablesCss';
 import styled from 'styled-components';
 
 export const RestaurantsListContainer = styled.main`
-  padding: 120px 12.5vw;
+  padding: 120px 10.5vw;
   background-color: ${colors.beige};
   display: flex;
   flex-wrap: wrap;

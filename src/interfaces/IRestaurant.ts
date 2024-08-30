@@ -8,5 +8,5 @@ export interface IRestaurant {
   tipo: string;
   destacado?: boolean;
   avaliacao: number;
-  cardapio: IDishe[];
+  cardapio?: IDishe[];
 }
