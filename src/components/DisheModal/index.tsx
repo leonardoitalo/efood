@@ -10,24 +10,24 @@ import {
   CloseButton,
 } from './stylesModal';
 import formatPrice from 'global/utils/formatPrice';
-import { IProductModal } from 'interfaces/IProductModal';
+import { IDishe } from 'interfaces/IDishe';
 
 const rootElement =
   document.getElementById('root') || document.createElement('div');
 
-const ProductModal = ({
+const DisheModal = ({
   isOpen,
   onClose,
-  img,
-  title,
-  text,
-  portion,
-  price,
-}: IProductModal) => {
+  foto,
+  nome,
+  descricao,
+  porcao,
+  preco,
+}: IDishe) => {
   return (
     <ReactModal
       appElement={rootElement}
-      isOpen={isOpen}
+      isOpen={isOpen ?? false}
       style={{
         overlay: {
           backgroundColor: 'transparent',
@@ -43,16 +43,16 @@ const ProductModal = ({
     >
       <Overlay>
         <ModalContainer>
-          <CloseButton onClick={onClose} src="imgs/closeIcon.png" />
+          <CloseButton onClick={onClose} src="/imgs/closeIcon.png" />
           <ModalImage>
-            <img src={img} alt="" />
+            <img src={foto} alt="" />
           </ModalImage>
           <ModalInfo>
-            <ModalTitle>{title}</ModalTitle>
-            <ModalText>{text}</ModalText>
-            <span>Serve: de {portion}</span>
+            <ModalTitle>{nome}</ModalTitle>
+            <ModalText>{descricao}</ModalText>
+            <span>Serve: de {porcao}</span>
             <ButtonBeige>
-              Adicionar ao carrinho - {formatPrice(price)}
+              Adicionar ao carrinho - {formatPrice(preco ?? 0)}
             </ButtonBeige>
           </ModalInfo>
         </ModalContainer>
@@ -61,4 +61,4 @@ const ProductModal = ({
   );
 };
 
-export default ProductModal;
+export default DisheModal;

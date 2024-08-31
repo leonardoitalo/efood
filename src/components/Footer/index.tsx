@@ -4,17 +4,17 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div>
-        <img src="imgs/logo.png" alt="" />
+        <img src="/imgs/logo.png" alt="" />
       </div>
       <LogosContainer>
         <a href="">
-          <img src="imgs/instagram-round.png" alt="Instagram logo" />
+          <img src="/imgs/instagram-round.png" alt="Instagram logo" />
         </a>
         <a href="">
-          <img src="imgs/facebook-round.png" alt="Facebook logo" />
+          <img src="/imgs/facebook-round.png" alt="Facebook logo" />
         </a>
         <a href="">
-          <img src="imgs/twitter-round.png" alt="Twitter logo" />
+          <img src="/imgs/twitter-round.png" alt="Twitter logo" />
         </a>
       </LogosContainer>
       <FooterText>
