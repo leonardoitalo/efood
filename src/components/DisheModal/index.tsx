@@ -11,6 +11,8 @@ import {
 } from './stylesModal';
 import formatPrice from 'global/utils/formatPrice';
 import { IDishe } from 'interfaces/IDishe';
+import { useDispatch } from 'react-redux';
+import { cartAdd } from 'store/Cart/action';
 
 const rootElement =
   document.getElementById('root') || document.createElement('div');
@@ -24,6 +26,14 @@ const DisheModal = ({
   porcao,
   preco,
 }: IDishe) => {
+  const dispatch = useDispatch();
+
+  const dishe: IDishe = { foto, nome, descricao, porcao, preco };
+
+  const handleAddToCart = () => {
+    dispatch(cartAdd(dishe));
+  };
+
   return (
     <ReactModal
       appElement={rootElement}
@@ -51,7 +61,7 @@ const DisheModal = ({
             <ModalTitle>{nome}</ModalTitle>
             <ModalText>{descricao}</ModalText>
             <span>Serve: de {porcao}</span>
-            <ButtonBeige>
+            <ButtonBeige onClick={handleAddToCart}>
               Adicionar ao carrinho - {formatPrice(preco ?? 0)}
             </ButtonBeige>
           </ModalInfo>

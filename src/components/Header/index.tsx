@@ -5,8 +5,13 @@ import {
   HeroRestaurantContainer,
   HeaderTitle,
 } from './styles';
+import useTypedSelector from 'global/hooks/useTypedSelector';
 
 const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
+  const { dishes } = useTypedSelector((rootReducer) => rootReducer.cartReducer);
+
+  console.log(dishes);
+
   return (
     <>
       <HeaderContainer>
@@ -17,7 +22,7 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
           <img src="/imgs/logo.png" alt="logo efood" />
         </div>
         <div>
-          <Cart>0 produto(s) no carrinho</Cart>
+          <Cart>{dishes.length} produto(s) no carrinho</Cart>
         </div>
       </HeaderContainer>
       <HeroRestaurantContainer $bgImg={img}>
