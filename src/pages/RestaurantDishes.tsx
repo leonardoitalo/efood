@@ -3,7 +3,6 @@ import DishesList from 'components/DishesList';
 import { useParams } from 'react-router-dom';
 import { IRestaurant } from 'interfaces/IRestaurant';
 import useFetchData from 'global/hooks/useFetchData';
-import Cart from 'components/Cart';
 
 const RestaurantDishes = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,7 +25,6 @@ const RestaurantDishes = () => {
           restaurantType={dishes.tipo}
           restaurantTitle={dishes.titulo}
           img={dishes.capa}
-          // cart={<Cart />}
         />
       )}
       <DishesList />

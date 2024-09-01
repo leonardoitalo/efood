@@ -8,15 +8,19 @@ import {
   CartTotalPriceContainer,
   CartTrashIcon,
 } from './styles';
-import useTypedSelector from 'global/hooks/useTypedSelector';
 import formatPrice from 'global/utils/formatPrice';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectDishesCount } from 'store/Cart/cart.selector';
+import { RootState } from 'store/store';
+import { removeDishe } from 'store/Cart/slice';
 const Cart = ({ isOpen, onClose }) => {
-  const { dishes } = useTypedSelector((rootReducer) => rootReducer.cartReducer);
-
+  const dishes = useSelector((state: RootState) => state.cart.dishes);
   const dishesCount = useSelector(selectDishesCount);
-  console.log(dishesCount);
+  const dispatch = useDispatch();
+
+  const handleRemoveDishe = (id: number) => {
+    dispatch(removeDishe(id));
+  };
 
   return (
     <CustomModal flexEnd isOpen={isOpen} onClose={onClose}>
@@ -33,7 +37,7 @@ const Cart = ({ isOpen, onClose }) => {
               </div>
               <CartTrashIcon>
                 <img
-                  onClick={onClose}
+                  onClick={() => handleRemoveDishe(dishe.id ?? 0)}
                   src="/imgs/lixeira-de-reciclagem.png"
                   alt="Icone de lixeira"
                 />

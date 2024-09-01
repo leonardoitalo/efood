@@ -1,7 +1,7 @@
-import { IRootState } from 'interfaces/IRootState';
+import { RootState } from 'store/store';
 
-export const selectDishesCount = (rootReducer: IRootState) => {
-  return rootReducer.cartReducer.dishes.reduce(
+export const selectDishesCount = (rootReducer: RootState) => {
+  return rootReducer.cart.dishes.reduce(
     (acc, curr) => acc + (curr.preco ?? 0),
     0
   );

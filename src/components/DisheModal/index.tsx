@@ -10,7 +10,8 @@ import {
 import formatPrice from 'global/utils/formatPrice';
 import { IDishe } from 'interfaces/IDishe';
 import { useDispatch } from 'react-redux';
-import { cartAdd } from 'store/Cart/action';
+
+import { addDishe } from 'store/Cart/slice';
 
 const DisheModal = ({
   isOpen,
@@ -26,7 +27,7 @@ const DisheModal = ({
   const dishe: IDishe = { foto, nome, descricao, porcao, preco };
 
   const handleAddToCart = () => {
-    dispatch(cartAdd(dishe));
+    dispatch(addDishe(dishe));
   };
 
   return (

@@ -5,12 +5,13 @@ import {
   HeroRestaurantContainer,
   HeaderTitle,
 } from './styles';
-import useTypedSelector from 'global/hooks/useTypedSelector';
 import Cart from 'components/Cart';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/store';
 
 const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
-  const { dishes } = useTypedSelector((rootReducer) => rootReducer.cartReducer);
+  const dishes = useSelector((state: RootState) => state.cart.dishes);
   const [showCart, setShowCart] = useState(false);
 
   const handleOpenCart = () => {
