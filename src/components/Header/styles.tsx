@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   height: 180px;
-  background-image: url('imgs/Vector.png');
+  background-image: url('/imgs/Vector.png');
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,10 +61,11 @@ export const HeaderTitle = styled(Link)`
   cursor: pointer;
 `;
 
-export const Cart = styled.span`
+export const HeaderCartLength = styled.span`
   font-size: 1.13rem;
   font-weight: 900;
   line-height: 1.2rem;
   text-align: right;
   color: ${colors.pink};
+  cursor: pointer;
 `;

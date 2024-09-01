@@ -7,7 +7,7 @@ export interface IDishe {
   porcao?: string;
   preco?: number;
   foto: string;
-  alt: string;
+  alt?: string;
   isOpen?: boolean;
   openModal?: MouseEventHandler<HTMLButtonElement>;
   onClose?: MouseEventHandler<HTMLImageElement>;

@@ -1,12 +1,27 @@
 import { IHeader } from 'interfaces/IHeader';
 import {
-  Cart,
+  HeaderCartLength,
   HeaderContainer,
   HeroRestaurantContainer,
   HeaderTitle,
 } from './styles';
+import Cart from 'components/Cart';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/store';
 
 const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
+  const dishes = useSelector((state: RootState) => state.cart.dishes);
+  const [showCart, setShowCart] = useState(false);
+
+  const handleOpenCart = () => {
+    setShowCart(true);
+  };
+
+  const handleCloseCart = () => {
+    setShowCart(false);
+  };
+
   return (
     <>
       <HeaderContainer>
@@ -17,7 +32,10 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
           <img src="/imgs/logo.png" alt="logo efood" />
         </div>
         <div>
-          <Cart>0 produto(s) no carrinho</Cart>
+          <HeaderCartLength onClick={handleOpenCart}>
+            {dishes.length} produto(s) no carrinho
+          </HeaderCartLength>
+          <Cart isOpen={showCart} onClose={handleCloseCart} />
         </div>
       </HeaderContainer>
       <HeroRestaurantContainer $bgImg={img}>

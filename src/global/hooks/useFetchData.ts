@@ -9,8 +9,7 @@ const useFetchData = <T>(url: string) => {
     const fetchData = async () => {
       try {
         const response = await fetch(url);
-        const result = await response.json();
-        console.log(result);
+        const result = await response.json()
         setData(result);
       } catch (error) {
         setError(error as Error);

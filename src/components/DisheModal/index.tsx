@@ -1,19 +1,17 @@
-import { ButtonBeige } from 'global/styles/GlobalStyledComponents';
-import ReactModal from 'react-modal';
+import { CustomModal, ButtonBeige } from 'global/styles/GlobalStyledComponents';
 import {
-  Overlay,
   ModalImage,
   ModalInfo,
   ModalTitle,
   ModalText,
   ModalContainer,
   CloseButton,
-} from './stylesModal';
+} from './styles';
 import formatPrice from 'global/utils/formatPrice';
 import { IDishe } from 'interfaces/IDishe';
+import { useDispatch } from 'react-redux';
 
-const rootElement =
-  document.getElementById('root') || document.createElement('div');
+import { addDishe } from 'store/Cart/slice';
 
 const DisheModal = ({
   isOpen,
@@ -24,40 +22,33 @@ const DisheModal = ({
   porcao,
   preco,
 }: IDishe) => {
+  const dispatch = useDispatch();
+
+  const dishe: IDishe = { foto, nome, descricao, porcao, preco };
+
+  const handleAddToCart = () => {
+    dispatch(addDishe(dishe));
+  };
+
   return (
-    <ReactModal
-      appElement={rootElement}
-      isOpen={isOpen ?? false}
-      style={{
-        overlay: {
-          backgroundColor: 'transparent',
-        },
-        content: {
-          position: 'static',
-          border: 'none',
-          background: 'none',
-          overflow: 'auto',
-          inset: 'unset',
-        },
-      }}
-    >
-      <Overlay>
-        <ModalContainer>
-          <CloseButton onClick={onClose} src="/imgs/closeIcon.png" />
-          <ModalImage>
-            <img src={foto} alt="" />
-          </ModalImage>
-          <ModalInfo>
-            <ModalTitle>{nome}</ModalTitle>
-            <ModalText>{descricao}</ModalText>
-            <span>Serve: de {porcao}</span>
-            <ButtonBeige>
+    <CustomModal isOpen={isOpen ?? false} onClose={() => onClose}>
+      <ModalContainer>
+        <CloseButton onClick={onClose} src="/imgs/closeIcon.png" />
+        <ModalImage>
+          <img src={foto} alt="" />
+        </ModalImage>
+        <ModalInfo>
+          <ModalTitle>{nome}</ModalTitle>
+          <ModalText>{descricao}</ModalText>
+          <span>Serve: de {porcao}</span>
+          <div>
+            <ButtonBeige onClick={handleAddToCart}>
               Adicionar ao carrinho - {formatPrice(preco ?? 0)}
             </ButtonBeige>
-          </ModalInfo>
-        </ModalContainer>
-      </Overlay>
-    </ReactModal>
+          </div>
+        </ModalInfo>
+      </ModalContainer>
+    </CustomModal>
   );
 };
 
