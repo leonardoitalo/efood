@@ -27,8 +27,10 @@ const Cart = ({ isOpen, onClose }) => {
               <CartDisheImage>
                 <img src={dishe.foto} alt={dishe.nome} />
               </CartDisheImage>
-              <h4>{dishe.nome}</h4>
-              <span>{formatPrice(dishe.preco ?? 0)}</span>
+              <div>
+                <h4>{dishe.nome}</h4>
+                <span>{formatPrice(dishe.preco ?? 0)}</span>
+              </div>
               <CartTrashIcon>
                 <img
                   onClick={onClose}

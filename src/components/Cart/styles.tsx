@@ -42,10 +42,10 @@ export const CartDisheContainer = styled.li`
   padding: 8px;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   align-content: flex-start;
   gap: 10px;
   color: ${colors.pink};
+  position: relative;
 
   h4 {
     font-size: 18px;
@@ -57,9 +57,6 @@ export const CartDisheContainer = styled.li`
     font-size: 14px;
     font-weight: 400;
   }
-
-  img {
-  }
 `;
 
 export const CartDisheImage = styled.div`
@@ -69,8 +66,11 @@ export const CartDisheImage = styled.div`
 `;
 
 export const CartTrashIcon = styled.div`
-  cursor: pointer;
   position: absolute;
-  left: 332px;
-  top: 108px;
+  top: 76px;
+  left: 322px;
+
+  img {
+    cursor: pointer;
+  }
 `;
