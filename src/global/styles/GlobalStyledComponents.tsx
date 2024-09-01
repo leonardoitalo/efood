@@ -15,7 +15,7 @@ export const ButtonBeige = styled.button`
   padding: 4px 6px;
 `;
 
-export const Overlay = styled.div`
+export const Overlay = styled.div<ICustomModalProps>`
   background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
   top: 0;
@@ -23,7 +23,7 @@ export const Overlay = styled.div`
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: center;
+  justify-content: ${({ flexEnd }) => (flexEnd ? 'flex-end' : 'center')};
   align-items: center;
   z-index: 1;
 `;
@@ -32,11 +32,12 @@ export const CustomModal: React.FC<ICustomModalProps> = ({
   isOpen,
   onClose,
   children,
+  flexEnd,
 }) => {
   return (
     <ReactModal
       appElement={rootElement}
-      isOpen={isOpen}
+      isOpen={isOpen ?? false}
       onRequestClose={onClose}
       style={{
         overlay: {
@@ -51,7 +52,7 @@ export const CustomModal: React.FC<ICustomModalProps> = ({
         },
       }}
     >
-      <Overlay>{children}</Overlay>
+      <Overlay flexEnd={flexEnd}>{children}</Overlay>
     </ReactModal>
   );
 };

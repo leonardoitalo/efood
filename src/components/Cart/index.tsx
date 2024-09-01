@@ -3,7 +3,7 @@ import { CartContainer, CartDisheContainer } from './styles';
 
 const Cart = ({ isOpen, onClose }) => {
   return (
-    <CustomModal isOpen={isOpen} onClose={onClose}>
+    <CustomModal flexEnd isOpen={isOpen} onClose={onClose}>
       <CartContainer>
         <CartDisheContainer>
           <img src="/imgs/image3.png" alt="" />
