@@ -68,7 +68,11 @@ export const CartDisheContainer = styled.li`
 export const CartDisheImage = styled.div`
   cursor: pointer;
   max-width: 82px;
-  max-height: 82px;
+  height: 100%;
+
+  img {
+    height: 100%;
+  }
 `;
 
 export const CartTrashIcon = styled.div`
