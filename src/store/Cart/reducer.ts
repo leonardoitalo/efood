@@ -3,7 +3,6 @@ import { IDishe } from 'interfaces/IDishe';
 
 const initalState = {
   dishes: [] as IDishe[],
-  dishesTotalPrice: 0,
 };
 
 const cartReducer = (
@@ -13,6 +12,7 @@ const cartReducer = (
   switch (action.type) {
     case CartActionTypes.ADD_DISHE:
       return { ...state, dishes: [...state.dishes, action.payload] };
+
     default:
       return state;
   }

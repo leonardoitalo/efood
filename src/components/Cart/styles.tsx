@@ -59,13 +59,18 @@ export const CartDisheContainer = styled.li`
   }
 
   img {
-    cursor: pointer;
   }
 `;
 
-export const CartTrashIcon = styled.img`
+export const CartDisheImage = styled.div`
+  cursor: pointer;
+  max-width: 82px;
+  max-height: 82px;
+`;
+
+export const CartTrashIcon = styled.div`
+  cursor: pointer;
   position: absolute;
   left: 332px;
   top: 108px;
-  cursor: pointer;
 `;
