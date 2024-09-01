@@ -40,9 +40,11 @@ const DisheModal = ({
           <ModalTitle>{nome}</ModalTitle>
           <ModalText>{descricao}</ModalText>
           <span>Serve: de {porcao}</span>
-          <ButtonBeige onClick={handleAddToCart}>
-            Adicionar ao carrinho - {formatPrice(preco ?? 0)}
-          </ButtonBeige>
+          <div>
+            <ButtonBeige onClick={handleAddToCart}>
+              Adicionar ao carrinho - {formatPrice(preco ?? 0)}
+            </ButtonBeige>
+          </div>
         </ModalInfo>
       </ModalContainer>
     </CustomModal>

@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-    * {
-        font-family: 'Roboto', sans-serif;
-    }
+  * {
+    font-family: 'Roboto', sans-serif;
+  }
 `;
 
 export default GlobalStyles;

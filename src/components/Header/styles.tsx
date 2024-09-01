@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   height: 180px;
-  background-image: url('imgs/Vector.png');
+  background-image: url('/imgs/Vector.png');
   display: flex;
   justify-content: space-between;
   align-items: center;
