@@ -7,6 +7,7 @@ const rootElement =
   document.getElementById('root') || document.createElement('div');
 
 export const ButtonBeige = styled.button`
+  width: 100%;
   background-color: ${colors.beigeDark};
   color: ${colors.pink};
   border: 0;
@@ -15,7 +16,11 @@ export const ButtonBeige = styled.button`
   padding: 4px 6px;
 `;
 
-export const Overlay = styled.div<ICustomModalProps>`
+export const Overlay = styled.div.attrs<ICustomModalProps>(({ flexEnd }) => ({
+  style: {
+    justifyContent: flexEnd ? 'flex-end' : 'center',
+  },
+}))`
   background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
   top: 0;
@@ -23,7 +28,6 @@ export const Overlay = styled.div<ICustomModalProps>`
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: ${({ flexEnd }) => (flexEnd ? 'flex-end' : 'center')};
   align-items: center;
   z-index: 1;
 `;
