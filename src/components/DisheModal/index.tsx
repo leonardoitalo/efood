@@ -29,6 +29,7 @@ const DisheModal = ({
 
   const handleAddToCart = () => {
     dispatch(addDishe(dishe));
+    alert(`Pedido ${dishe.nome} adicionado no carrinho.`);
   };
 
   return (
