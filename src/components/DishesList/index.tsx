@@ -51,6 +51,7 @@ const DishesList = () => {
         <DisheModal
           isOpen={showModal}
           onClose={handleClose}
+          id={selectedDishe.id}
           foto={selectedDishe.foto}
           nome={selectedDishe.nome}
           descricao={selectedDishe.descricao}

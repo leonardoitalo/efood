@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { addDishe } from 'store/Cart/slice';
 
 const DisheModal = ({
+  id,
   isOpen,
   onClose,
   foto,
@@ -24,7 +25,7 @@ const DisheModal = ({
 }: IDishe) => {
   const dispatch = useDispatch();
 
-  const dishe: IDishe = { foto, nome, descricao, porcao, preco };
+  const dishe: IDishe = { id, foto, nome, descricao, porcao, preco };
 
   const handleAddToCart = () => {
     dispatch(addDishe(dishe));
