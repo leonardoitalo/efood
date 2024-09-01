@@ -30,6 +30,12 @@ export const CartTotalPriceContainer = styled.div`
   justify-content: space-between;
 `;
 
+export const CartButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
 export const CartList = styled.ul`
   display: flex;
   flex-direction: column;

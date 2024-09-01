@@ -1,5 +1,6 @@
 import { ButtonBeige, CustomModal } from 'global/styles/GlobalStyledComponents';
 import {
+  CartButtonsContainer,
   CartContainer,
   CartDisheContainer,
   CartDisheImage,
@@ -13,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectDishesCount } from 'store/Cart/cart.selector';
 import { RootState } from 'store/store';
 import { removeDishe } from 'store/Cart/slice';
+
 const Cart = ({ isOpen, onClose }) => {
   const dishes = useSelector((state: RootState) => state.cart.dishes);
   const dishesCount = useSelector(selectDishesCount);
@@ -50,11 +52,13 @@ const Cart = ({ isOpen, onClose }) => {
             <h3>Valor total:</h3>
             <span>{formatPrice(dishesCount)}</span>
           </CartTotalPriceContainer>
-          <div>
+          <CartButtonsContainer>
             <ButtonBeige>Continuar com a entrega</ButtonBeige>
-          </div>
+            <ButtonBeige onClick={onClose}>Fechar Carrinho</ButtonBeige>
+          </CartButtonsContainer>
         </CartFinishOrderContainer>
       </CartContainer>
+      {}
     </CustomModal>
   );
 };
