@@ -6,7 +6,7 @@ import {
   HeaderTitle,
 } from './styles';
 import Cart from 'components/Cart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 
@@ -14,8 +14,18 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
   const dishes = useSelector((state: RootState) => state.cart.dishes);
   const [showCart, setShowCart] = useState(false);
 
+  useEffect(() => {
+    if (dishes.length === 0) {
+      setShowCart(false);
+    }
+  }, [dishes]);
+
   const handleOpenCart = () => {
-    setShowCart(true);
+    if (dishes.length > 0) {
+      setShowCart(true);
+    } else {
+      alert('Adicone pedidos no carrinho!');
+    }
   };
 
   const handleCloseCart = () => {
