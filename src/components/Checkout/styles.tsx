@@ -16,6 +16,7 @@ export const CheckoutContainer = styled.div`
 
 export const Form = styled.form`
   color: ${colors.beigeDark};
+  width: 100%;
 
   h4 {
     margin-bottom: 8px;
@@ -34,29 +35,18 @@ export const Form = styled.form`
   label {
     font-size: 14px;
     font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  div {
-    width: 100%;
   }
 `;
 
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 350px;
+  height: 384px;
+  gap: 8px;
+  justify-content: flex-start;
 `;
 
 export const FormInputLabel = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  gap: 8px; */
-  height: 80px;
-`;
-
-export const FormButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -64,7 +54,7 @@ export const FormButtonContainer = styled.div`
 
 export const FormInputContainerMid = styled.div`
   width: 155px;
-  height: 56px;
+  height: 66px;
   display: flex;
   gap: 42px;
 
@@ -75,4 +65,10 @@ export const FormInputContainerMid = styled.div`
 
 export const FormInput = styled.input`
   width: 100%;
+`;
+
+export const FormButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;

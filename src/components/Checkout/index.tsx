@@ -19,46 +19,32 @@ const Checkout = ({ isOpen, onClose }) => {
           </div>
           <InputsContainer>
             <FormInputLabel>
-              <div>
-                <label htmlFor="name">Quem irá receber</label>
-              </div>
-              <div>
-                <FormInput type="text" />
-              </div>
+              <label htmlFor="name">Quem irá receber</label>
+              <FormInput type="text" />
             </FormInputLabel>
             <FormInputLabel>
               <label htmlFor="name">Endereço</label>
-              <div>
-                <FormInput type="text" />
-              </div>
+              <FormInput type="text" />
             </FormInputLabel>
             <FormInputLabel>
               <label htmlFor="name">Cidade</label>
-              <div>
-                <FormInput type="text" />
-              </div>
+              <FormInput type="text" />
             </FormInputLabel>
 
             <FormInputContainerMid>
               <FormInputLabel>
                 <label htmlFor="name">CEP</label>
-                <div>
-                  <FormInput type="text" />
-                </div>
+                <FormInput type="text" />
               </FormInputLabel>
               <FormInputLabel>
                 <label htmlFor="name">Número</label>
-                <div>
-                  <FormInput type="text" />
-                </div>
+                <FormInput type="text" />
               </FormInputLabel>
             </FormInputContainerMid>
 
             <FormInputLabel>
               <label htmlFor="name">Complemento (opcional)</label>
-              <div>
-                <FormInput type="text" />
-              </div>
+              <FormInput type="text" />
             </FormInputLabel>
           </InputsContainer>
 
