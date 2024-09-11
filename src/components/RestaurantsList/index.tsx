@@ -1,58 +1,30 @@
 import Restaurant from 'components/Restaurant';
 import { RestaurantsListContainer } from './styles';
 
+import { useGetRestaurantQuery } from 'services/api';
+
 const RestaurantsList = () => {
+  const { data: restaurants, isLoading } = useGetRestaurantQuery();
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!restaurants) return <p>No data available</p>;
+
   return (
     <RestaurantsListContainer>
-      <Restaurant
-        title={'Hioki Sushi'}
-        rating={4.9}
-        type={'Japonesa'}
-        highlighted
-        text={
-          'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-        }
-      />
-      <Restaurant
-        title={'Hioki Sushi'}
-        rating={4.9}
-        type={'Japonesa'}
-        text={
-          'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-        }
-      />
-      <Restaurant
-        title={'Hioki Sushi'}
-        rating={4.9}
-        type={'Japonesa'}
-        text={
-          'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-        }
-      />
-      <Restaurant
-        title={'Hioki Sushi'}
-        rating={4.9}
-        type={'Japonesa'}
-        text={
-          'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-        }
-      />
-      <Restaurant
-        title={'Hioki Sushi'}
-        rating={4.9}
-        type={'Japonesa'}
-        text={
-          'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-        }
-      />
-      <Restaurant
-        title={'Hioki Sushi'}
-        rating={4.9}
-        type={'Japonesa'}
-        text={
-          'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!'
-        }
-      />
+      {restaurants.map(
+        ({ id, titulo, capa, tipo, avaliacao, destacado, descricao }) => (
+          <Restaurant
+            id={id}
+            key={id}
+            titulo={titulo}
+            capa={capa}
+            tipo={tipo}
+            avaliacao={avaliacao}
+            destacado={destacado}
+            descricao={descricao}
+          />
+        )
+      )}
     </RestaurantsListContainer>
   );
 };

@@ -14,35 +14,37 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const Restaurant = ({
-  title,
-  text,
-  type,
-  highlighted,
-  rating,
+  id,
+  titulo,
+  capa,
+  descricao,
+  tipo,
+  destacado,
+  avaliacao,
 }: IRestaurant) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/profile');
+    navigate(`/restaurant/${id}`);
   };
 
   return (
     <RestaurantContainer>
-      <ImgContainer $bgImg="imgs/imagem.png">
-        <Type>{type}</Type>
-        {highlighted ? <Highlighted>Destaque da Semana</Highlighted> : ''}
+      <ImgContainer $bgImg={capa}>
+        <Type>{tipo}</Type>
+        {destacado ? <Highlighted>Destaque da Semana</Highlighted> : ''}
       </ImgContainer>
       <InfoContainer>
         <InfoHeader>
-          <InfoTitle>{title}</InfoTitle>
+          <InfoTitle>{titulo}</InfoTitle>
           <Rating>
-            <span>{rating}</span>
+            <span>{avaliacao}</span>
             <div>
               <img src="imgs/estrela.png" alt="" />
             </div>
           </Rating>
         </InfoHeader>
-        <InfoText>{text}</InfoText>
+        <InfoText>{descricao}</InfoText>
         <InfoButton onClick={handleClick}>Saiba mais</InfoButton>
       </InfoContainer>
     </RestaurantContainer>

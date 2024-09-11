@@ -1,11 +1,11 @@
-import { colors } from 'global/variablesCss';
+import { colors } from 'global/styles/variablesCss';
 import { IContainerImgProps } from 'interfaces/IContainerImgProps';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   height: 180px;
-  background-image: url('imgs/Vector.png');
+  background-image: url('/imgs/Vector.png');
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,6 +24,7 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   justify-content: space-between;
   padding: 25px 0 32px 12.5vw;
   color: ${colors.white};
+  z-index: 0;
 
   &::before {
     content: '';
@@ -60,10 +61,11 @@ export const HeaderTitle = styled(Link)`
   cursor: pointer;
 `;
 
-export const Cart = styled.span`
+export const HeaderCartLength = styled.span`
   font-size: 1.13rem;
   font-weight: 900;
   line-height: 1.2rem;
   text-align: right;
   color: ${colors.pink};
+  cursor: pointer;
 `;

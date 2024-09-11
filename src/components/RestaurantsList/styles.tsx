@@ -1,4 +1,4 @@
-import { colors } from 'global/variablesCss';
+import { colors } from 'global/styles/variablesCss';
 import styled from 'styled-components';
 
 export const RestaurantsListContainer = styled.main`
@@ -13,18 +13,4 @@ export const RestaurantsListContainer = styled.main`
     // Ajuste para telas menores
     grid-template-columns: 1fr; // Exibe 1 item por linha em telas menores
   }
-
-  /* padding: 120px 12.5vw;
-  background-color: ${colors.beige};
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  gap: 48px 80px;
-
-  & > * {
-    flex-basis: calc(50% - 80px);
-    max-width: calc(50% - 80px);
-  } */
 `;
