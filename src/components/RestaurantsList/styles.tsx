@@ -5,9 +5,9 @@ export const RestaurantsListContainer = styled.main`
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(2, 1fr); // 2 colunas com tamanho igual
-  row-gap: 48px; // Espaço entre os itens (pode ajustar o valor como preferir)
-  width: 100%;
-  padding: 120px 23.5vw;
+  row-gap: 4vw; // Espaço entre os itens (pode ajustar o valor como preferir)
+  width: 100vw;
+  padding: 120px 12.5vw;
   background-color: ${colors.beige};
 
   @media (max-width: 768px) {
