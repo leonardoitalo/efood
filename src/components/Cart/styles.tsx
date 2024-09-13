@@ -42,7 +42,7 @@ export const CartList = styled.ul`
   gap: 8px;
 `;
 export const CartDisheContainer = styled.li`
-  width: 344px;
+  width: 389px;
   height: 100px;
   background-color: ${colors.beigeDark};
   padding: 8px;
@@ -78,7 +78,7 @@ export const CartDisheImage = styled.div`
 export const CartTrashIcon = styled.div`
   position: absolute;
   top: 76px;
-  left: 322px;
+  left: 366px;
 
   img {
     cursor: pointer;
