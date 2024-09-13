@@ -6,30 +6,20 @@ import {
   HeaderTitle,
 } from './styles';
 import Cart from 'components/Cart';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
+import { openCart } from 'store/Cart/slice'; // Ação apenas para abrir o carrinho
 
 const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
   const dishes = useSelector((state: RootState) => state.cart.dishes);
-  const [showCart, setShowCart] = useState(false);
-
-  useEffect(() => {
-    if (dishes.length === 0) {
-      setShowCart(false);
-    }
-  }, [dishes]);
+  const dispatch = useDispatch();
 
   const handleOpenCart = () => {
     if (dishes.length > 0) {
-      setShowCart(true);
+      dispatch(openCart()); // Abre o carrinho
     } else {
-      alert('Adicone pedidos no carrinho!');
+      alert('Adicione pedidos no carrinho!');
     }
-  };
-
-  const handleCloseCart = () => {
-    setShowCart(false);
   };
 
   return (
@@ -45,7 +35,7 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
           <HeaderCartLength onClick={handleOpenCart}>
             {dishes.length} produto(s) no carrinho
           </HeaderCartLength>
-          <Cart isOpen={showCart} onClose={handleCloseCart} />
+          <Cart /> {/* O estado do carrinho será controlado pelo Redux */}
         </div>
       </HeaderContainer>
       <HeroRestaurantContainer $bgImg={img}>

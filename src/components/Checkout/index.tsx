@@ -8,10 +8,29 @@ import {
   FormInputLabel,
   InputsContainer,
 } from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store/store';
+import { closeCheckout } from 'store/Cart/slice'; // Ação para fechar o checkout
 
 const Checkout = ({ isOpen, onClose }) => {
+  const dispatch = useDispatch();
+  const isCheckoutOpen = useSelector(
+    (state: RootState) => state.cart.isCheckoutOpen
+  ); // Estado do checkout
+
+  const handleCloseCheckout = () => {
+    dispatch(closeCheckout());
+    if (onClose) {
+      onClose(); // Se houver uma função de fechamento passada via props, ela também é executada
+    }
+  };
+
   return (
-    <CustomModal flexEnd isOpen={isOpen} onClose={onClose}>
+    <CustomModal
+      flexEnd
+      isOpen={isCheckoutOpen || isOpen}
+      onClose={handleCloseCheckout}
+    >
       <CheckoutContainer>
         <Form action="">
           <div>
@@ -50,7 +69,9 @@ const Checkout = ({ isOpen, onClose }) => {
 
           <FormButtonContainer>
             <ButtonBeige>Continuar com o pagamento</ButtonBeige>
-            <ButtonBeige>Voltar para o carrinho</ButtonBeige>
+            <ButtonBeige onClick={handleCloseCheckout}>
+              Voltar para o carrinho
+            </ButtonBeige>
           </FormButtonContainer>
         </Form>
       </CheckoutContainer>
