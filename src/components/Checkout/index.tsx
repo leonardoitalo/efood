@@ -10,7 +10,8 @@ import {
 } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
-import { closeCheckout } from 'store/Cart/slice'; // Ação para fechar o checkout
+import { closeCheckout, openPayment } from 'store/Cart/slice'; // Ação para fechar o checkout
+import Payment from 'components/Payment';
 
 const Checkout = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
@@ -25,57 +26,69 @@ const Checkout = ({ isOpen, onClose }) => {
     }
   };
 
+  const handleToPayment = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    dispatch(closeCheckout());
+    dispatch(openPayment());
+  };
+
   return (
-    <CustomModal
-      flexEnd
-      isOpen={isCheckoutOpen || isOpen}
-      onClose={handleCloseCheckout}
-    >
-      <CheckoutContainer>
-        <Form action="">
-          <div>
-            <h4>Entrega</h4>
-          </div>
-          <InputsContainer>
-            <FormInputLabel>
-              <label htmlFor="name">Quem irá receber</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-            <FormInputLabel>
-              <label htmlFor="name">Endereço</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-            <FormInputLabel>
-              <label htmlFor="name">Cidade</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-
-            <FormInputContainerMid>
+    <>
+      <CustomModal
+        flexEnd
+        isOpen={isCheckoutOpen || isOpen}
+        onClose={handleCloseCheckout}
+      >
+        <CheckoutContainer>
+          <Form action="">
+            <div>
+              <h4>Entrega</h4>
+            </div>
+            <InputsContainer>
               <FormInputLabel>
-                <label htmlFor="name">CEP</label>
+                <label htmlFor="name">Quem irá receber</label>
                 <FormInput type="text" />
               </FormInputLabel>
               <FormInputLabel>
-                <label htmlFor="name">Número</label>
+                <label htmlFor="name">Endereço</label>
                 <FormInput type="text" />
               </FormInputLabel>
-            </FormInputContainerMid>
+              <FormInputLabel>
+                <label htmlFor="name">Cidade</label>
+                <FormInput type="text" />
+              </FormInputLabel>
 
-            <FormInputLabel>
-              <label htmlFor="name">Complemento (opcional)</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-          </InputsContainer>
+              <FormInputContainerMid>
+                <FormInputLabel>
+                  <label htmlFor="name">CEP</label>
+                  <FormInput type="text" />
+                </FormInputLabel>
+                <FormInputLabel>
+                  <label htmlFor="name">Número</label>
+                  <FormInput type="text" />
+                </FormInputLabel>
+              </FormInputContainerMid>
 
-          <FormButtonContainer>
-            <ButtonBeige>Continuar com o pagamento</ButtonBeige>
-            <ButtonBeige onClick={handleCloseCheckout}>
-              Voltar para o carrinho
-            </ButtonBeige>
-          </FormButtonContainer>
-        </Form>
-      </CheckoutContainer>
-    </CustomModal>
+              <FormInputLabel>
+                <label htmlFor="name">Complemento (opcional)</label>
+                <FormInput type="text" />
+              </FormInputLabel>
+            </InputsContainer>
+
+            <FormButtonContainer>
+              <ButtonBeige onClick={handleToPayment}>
+                Continuar com o pagamento
+              </ButtonBeige>
+              <ButtonBeige onClick={handleCloseCheckout}>
+                Voltar para o carrinho
+              </ButtonBeige>
+            </FormButtonContainer>
+          </Form>
+        </CheckoutContainer>
+      </CustomModal>
+
+      <Payment />
+    </>
   );
 };
 

@@ -5,12 +5,14 @@ interface CartState {
   dishes: IDishe[];
   isCartOpen: boolean;
   isCheckoutOpen: boolean;
+  isPaymentOpen: boolean;
 }
 
 const initialState: CartState = {
   dishes: [],
   isCartOpen: false,
   isCheckoutOpen: false,
+  isPaymentOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -36,6 +38,12 @@ const cartSlice = createSlice({
     closeCheckout: (state) => {
       state.isCheckoutOpen = false;
     },
+    openPayment: (state) => {
+      state.isPaymentOpen = true;
+    },
+    closePayment: (state) => {
+      state.isPaymentOpen = false;
+    },
   },
 });
 
@@ -46,5 +54,7 @@ export const {
   closeCheckout,
   openCart,
   openCheckout,
+  openPayment,
+  closePayment,
 } = cartSlice.actions;
 export default cartSlice.reducer;
