@@ -6,6 +6,7 @@ interface CartState {
   isCartOpen: boolean;
   isCheckoutOpen: boolean;
   isPaymentOpen: boolean;
+  isConfirmMessageOpen: boolean;
 }
 
 const initialState: CartState = {
@@ -13,6 +14,7 @@ const initialState: CartState = {
   isCartOpen: false,
   isCheckoutOpen: false,
   isPaymentOpen: false,
+  isConfirmMessageOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -44,17 +46,25 @@ const cartSlice = createSlice({
     closePayment: (state) => {
       state.isPaymentOpen = false;
     },
+    openConfirmMessage: (state) => {
+      state.isConfirmMessageOpen = true;
+    },
+    closeConfirmMessage: (state) => {
+      state.isConfirmMessageOpen = false;
+    },
   },
 });
 
 export const {
   addDishe,
   removeDishe,
-  closeCart,
-  closeCheckout,
   openCart,
+  closeCart,
   openCheckout,
+  closeCheckout,
   openPayment,
   closePayment,
+  openConfirmMessage,
+  closeConfirmMessage,
 } = cartSlice.actions;
 export default cartSlice.reducer;
