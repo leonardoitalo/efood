@@ -1,13 +1,14 @@
-import { ButtonBeige, CustomModal } from 'global/styles/GlobalStyledComponents';
 import {
-  CheckoutContainer,
+  ButtonBeige,
+  CustomModal,
   Form,
   FormButtonContainer,
   FormInput,
-  FormInputContainerMid,
   FormInputLabel,
   InputsContainer,
-} from './styles';
+  ModalFormContainer,
+} from 'global/styles/GlobalStyledComponents';
+import { FormInputSm } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import { closeCheckout, openPayment } from 'store/Cart/slice'; // Ação para fechar o checkout
@@ -39,7 +40,7 @@ const Checkout = ({ isOpen, onClose }) => {
         isOpen={isCheckoutOpen || isOpen}
         onClose={handleCloseCheckout}
       >
-        <CheckoutContainer>
+        <ModalFormContainer>
           <Form action="">
             <div>
               <h4>Entrega</h4>
@@ -58,7 +59,7 @@ const Checkout = ({ isOpen, onClose }) => {
                 <FormInput type="text" />
               </FormInputLabel>
 
-              <FormInputContainerMid>
+              <FormInputSm>
                 <FormInputLabel>
                   <label htmlFor="name">CEP</label>
                   <FormInput type="text" />
@@ -67,7 +68,7 @@ const Checkout = ({ isOpen, onClose }) => {
                   <label htmlFor="name">Número</label>
                   <FormInput type="text" />
                 </FormInputLabel>
-              </FormInputContainerMid>
+              </FormInputSm>
 
               <FormInputLabel>
                 <label htmlFor="name">Complemento (opcional)</label>
@@ -84,7 +85,7 @@ const Checkout = ({ isOpen, onClose }) => {
               </ButtonBeige>
             </FormButtonContainer>
           </Form>
-        </CheckoutContainer>
+        </ModalFormContainer>
       </CustomModal>
 
       <Payment />

@@ -19,12 +19,11 @@ import {
   closeCheckout,
 } from 'store/Cart/slice'; // Importando as ações
 import Checkout from 'components/Checkout';
+import { selectDishesCount } from 'store/Cart/cart.selector';
 
 const Cart = () => {
   const dishes = useSelector((state: RootState) => state.cart.dishes);
-  const dishesCount = useSelector(
-    (state: RootState) => state.cart.dishes.length
-  );
+  const dishesCount = useSelector(selectDishesCount);
   const isCartOpen = useSelector((state: RootState) => state.cart.isCartOpen);
   const isCheckoutOpen = useSelector(
     (state: RootState) => state.cart.isCheckoutOpen
