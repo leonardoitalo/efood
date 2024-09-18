@@ -8,4 +8,8 @@ export const DishesListContainer = styled.div`
   align-items: stretch;
   gap: 2.3vw;
   padding: 56px 12.5vw 120px 12.5vw;
+
+  @media (max-width: 880px) {
+    flex-direction: column;
+  }
 `;

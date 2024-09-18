@@ -12,12 +12,7 @@ import {
 import formatPrice from 'global/utils/formatPrice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
-import {
-  removeDishe,
-  closeCart,
-  openCheckout,
-  closeCheckout,
-} from 'store/Cart/slice'; // Importando as ações
+import { removeDishe, closeCart, openCheckout } from 'store/Cart/slice'; // Importando as ações
 import Checkout from 'components/Checkout';
 import { selectDishesCount } from 'store/Cart/cart.selector';
 
@@ -25,9 +20,6 @@ const Cart = () => {
   const dishes = useSelector((state: RootState) => state.cart.dishes);
   const dishesCount = useSelector(selectDishesCount);
   const isCartOpen = useSelector((state: RootState) => state.cart.isCartOpen);
-  const isCheckoutOpen = useSelector(
-    (state: RootState) => state.cart.isCheckoutOpen
-  );
   const dispatch = useDispatch();
 
   const handleRemoveDishe = (id: number) => {
@@ -42,6 +34,10 @@ const Cart = () => {
   const handleCloseCart = () => {
     dispatch(closeCart());
   };
+
+  if (dishes.length < 1) {
+    dispatch(closeCart());
+  }
 
   return (
     <>
@@ -85,10 +81,7 @@ const Cart = () => {
       </CustomModal>
 
       {/* O Checkout é exibido quando o estado isCheckoutOpen é verdadeiro */}
-      <Checkout
-        isOpen={isCheckoutOpen}
-        onClose={() => dispatch(closeCheckout())}
-      />
+      <Checkout />
     </>
   );
 };

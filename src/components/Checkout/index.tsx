@@ -2,7 +2,12 @@ import { useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
-import { closeCheckout, openPayment, setDeliveryData } from 'store/Cart/slice';
+import {
+  closeCheckout,
+  openCart,
+  openPayment,
+  setDeliveryData,
+} from 'store/Cart/slice';
 import Payment from 'components/Payment';
 import { IDeliveryData } from 'interfaces/IDeliveryData';
 import { FormInputSm } from './styles';
@@ -17,19 +22,23 @@ import {
   ModalFormContainer,
 } from 'global/styles/GlobalStyledComponents';
 
-const Checkout = ({ isOpen, onClose }) => {
+const Checkout = () => {
   const dispatch = useDispatch();
   const isCheckoutOpen = useSelector(
     (state: RootState) => state.cart.isCheckoutOpen
   );
 
-  const { register, handleSubmit, reset, watch } = useForm<IDeliveryData>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<IDeliveryData>();
 
   const handleCloseCheckout = () => {
     dispatch(closeCheckout());
-    if (onClose) {
-      onClose();
-    }
+    dispatch(openCart());
   };
 
   const handleToPayment = (data: IDeliveryData) => {
@@ -56,7 +65,7 @@ const Checkout = ({ isOpen, onClose }) => {
     <>
       <CustomModal
         flexEnd
-        isOpen={isCheckoutOpen || isOpen}
+        isOpen={isCheckoutOpen}
         onClose={handleCloseCheckout}
       >
         <ModalFormContainer>
@@ -69,22 +78,35 @@ const Checkout = ({ isOpen, onClose }) => {
                 <label htmlFor="receiver">Quem irá receber</label>
                 <FormInput
                   type="text"
-                  {...register('receiver', { required: true })}
+                  {...register('receiver', {
+                    required: 'Nome do recebedor é obrigatório',
+                  })}
                 />
+                {errors.receiver && <span>{errors.receiver.message}</span>}
               </FormInputLabel>
               <FormInputLabel>
                 <label htmlFor="address.description">Endereço</label>
                 <FormInput
                   type="text"
-                  {...register('address.description', { required: true })}
+                  {...register('address.description', {
+                    required: 'Endereço é obrigatório',
+                  })}
                 />
+                {errors.address?.description && (
+                  <span>{errors.address.description.message}</span>
+                )}
               </FormInputLabel>
               <FormInputLabel>
                 <label htmlFor="address.city">Cidade</label>
                 <FormInput
                   type="text"
-                  {...register('address.city', { required: true })}
+                  {...register('address.city', {
+                    required: 'Cidade é obrigatória',
+                  })}
                 />
+                {errors.address?.city && (
+                  <span>{errors.address.city.message}</span>
+                )}
               </FormInputLabel>
 
               <FormInputSm>
@@ -92,16 +114,30 @@ const Checkout = ({ isOpen, onClose }) => {
                   <label htmlFor="address.zipCode">CEP</label>
                   <InputMask
                     mask="99999-999"
-                    {...register('address.zipCode')}
+                    {...register('address.zipCode', {
+                      required: 'CEP é obrigatório',
+                      pattern: {
+                        value: /^[0-9]{5}-[0-9]{3}$/,
+                        message: 'Formato de CEP inválido',
+                      },
+                    })}
                     type="text"
                   />
+                  {errors.address?.zipCode && (
+                    <span>{errors.address.zipCode.message}</span>
+                  )}
                 </FormInputLabel>
                 <FormInputLabel>
                   <label htmlFor="address.number">Número</label>
                   <FormInput
                     type="text"
-                    {...register('address.number', { required: true })}
+                    {...register('address.number', {
+                      required: 'Número é obrigatório',
+                    })}
                   />
+                  {errors.address?.number && (
+                    <span>{errors.address.number.message}</span>
+                  )}
                 </FormInputLabel>
               </FormInputSm>
 

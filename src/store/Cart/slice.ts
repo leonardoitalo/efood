@@ -34,7 +34,6 @@ const cartSlice = createSlice({
     },
     openCart: (state) => {
       state.isCartOpen = true;
-      state.isCheckoutOpen = false; // Ao abrir o carrinho, o checkout é fechado
     },
     closeCart: (state) => {
       state.isCartOpen = false;

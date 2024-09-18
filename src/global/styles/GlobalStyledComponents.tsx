@@ -16,51 +16,6 @@ export const ButtonBeige = styled.button`
   padding: 4px 6px;
 `;
 
-export const Overlay = styled.div.attrs<ICustomModalProps>(({ flexEnd }) => ({
-  style: {
-    justifyContent: flexEnd ? 'flex-end' : 'center',
-  },
-}))`
-  background-color: rgba(0, 0, 0, 0.75);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-`;
-
-export const CustomModal: React.FC<ICustomModalProps> = ({
-  isOpen,
-  onClose,
-  children,
-  flexEnd,
-}) => {
-  return (
-    <ReactModal
-      appElement={rootElement}
-      isOpen={isOpen ?? false}
-      onRequestClose={onClose}
-      style={{
-        overlay: {
-          backgroundColor: 'transparent',
-        },
-        content: {
-          position: 'static',
-          border: 'none',
-          background: 'none',
-          overflow: 'auto',
-          inset: 'unset',
-        },
-      }}
-    >
-      <Overlay flexEnd={flexEnd}>{children}</Overlay>
-    </ReactModal>
-  );
-};
-
 export const ModalFormContainer = styled.div`
   transition: all 0.3s ease;
   width: 360px;
@@ -121,4 +76,49 @@ export const FormButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+`;
+
+export const CustomModal: React.FC<ICustomModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  flexEnd,
+}) => {
+  return (
+    <ReactModal
+      appElement={rootElement}
+      isOpen={isOpen ?? false}
+      onRequestClose={onClose}
+      style={{
+        overlay: {
+          backgroundColor: 'transparent',
+        },
+        content: {
+          position: 'static',
+          border: 'none',
+          background: 'none',
+          overflow: 'auto',
+          inset: 'unset',
+        },
+      }}
+    >
+      <Overlay flexEnd={flexEnd}>{children}</Overlay>
+    </ReactModal>
+  );
+};
+
+export const Overlay = styled.div.attrs<ICustomModalProps>(({ flexEnd }) => ({
+  style: {
+    justifyContent: flexEnd ? 'flex-end' : 'center',
+  },
+}))`
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1;
 `;

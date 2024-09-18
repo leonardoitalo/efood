@@ -10,6 +10,11 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 12.5vw 0 12.5vw;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;
 
 export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
