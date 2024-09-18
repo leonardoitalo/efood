@@ -1,3 +1,14 @@
+import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store/store';
+import { FormInputLg } from './styles';
+import { FormInputSm } from 'components/Checkout/styles';
+import ConfirmMessage from 'components/ConfirmMessage';
+import { useSubmitOrderMutation } from 'services/api';
+import { selectDishesCount } from 'store/Cart/cart.selector';
+import formatPrice from 'global/utils/formatPrice';
+import { IPaymentData } from 'interfaces/IPaymentData';
 import {
   ButtonBeige,
   CustomModal,
@@ -8,44 +19,36 @@ import {
   InputsContainer,
   ModalFormContainer,
 } from 'global/styles/GlobalStyledComponents';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/store';
-import { FormInputLg } from './styles';
 import {
   closePayment,
   openCheckout,
   openConfirmMessage,
-  PaymentData,
+  setOrderId,
 } from 'store/Cart/slice';
-import { FormInputSm } from 'components/Checkout/styles';
-import ConfirmMessage from 'components/ConfirmMessage';
-import { useForm } from 'react-hook-form';
-import InputMask from 'react-input-mask';
-import { useSubmitOrderMutation } from 'services/api';
 
 const Payment = () => {
   const dispatch = useDispatch();
-  const [submitOrder, { isLoading, isSuccess, isError }] =
-    useSubmitOrderMutation();
+  const dishesCount = useSelector(selectDishesCount);
+  const [submitOrder] = useSubmitOrderMutation();
   const deliveryData = useSelector(
     (state: RootState) => state.cart.deliveryData
   );
   const dishes = useSelector((state: RootState) => state.cart.dishes);
 
-  const { register, handleSubmit, reset } = useForm<PaymentData>();
+  const { register, handleSubmit, reset } = useForm<IPaymentData>();
 
   const isPaymentOpen = useSelector(
     (state: RootState) => state.cart.isPaymentOpen
   );
 
-  const handleClosePayment = async (data: PaymentData) => {
+  const handleClosePayment = async (data: IPaymentData) => {
     if (!deliveryData) {
       console.error('Dados de entrega ausentes');
-      return; // Interrompa o envio se não houver dados de entrega
+      return;
     }
 
-    const requestData = {
-      products: dishes, // Adicione os produtos se necessário
+    const DeliveryData = {
+      products: dishes,
       delivery: deliveryData,
       payment: {
         card: {
@@ -61,10 +64,9 @@ const Payment = () => {
     };
 
     try {
-      const response = await submitOrder(requestData).unwrap();
-      console.log('Pedido realizado com sucesso:', response);
+      const response = await submitOrder(DeliveryData).unwrap();
+      dispatch(setOrderId(response.orderId));
       dispatch(closePayment());
-      console.log(requestData);
 
       // Lógica adicional em caso de sucesso
     } catch (error) {
@@ -88,7 +90,7 @@ const Payment = () => {
         <ModalFormContainer>
           <Form onSubmit={handleSubmit(handleClosePayment)}>
             <div>
-              <h4>Pagamento - Valor a pagar R$ 190,90</h4>
+              <h4>Pagamento - Valor a pagar {formatPrice(dishesCount)}</h4>
             </div>
             <InputsContainer>
               <FormInputLabel>
@@ -122,14 +124,15 @@ const Payment = () => {
                 <FormInputLabel>
                   <label htmlFor="month">Mês de vencimento</label>
                   <InputMask
-                    mask="99999-999"
+                    mask="99"
                     type="text"
                     {...register('month', { required: true })}
                   />
                 </FormInputLabel>
                 <FormInputLabel>
                   <label htmlFor="number">Ano de vencimento</label>
-                  <FormInput
+                  <InputMask
+                    mask="9999"
                     type="year"
                     {...register('year', { required: true })}
                   />

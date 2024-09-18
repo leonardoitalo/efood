@@ -1,3 +1,11 @@
+import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store/store';
+import { closeCheckout, openPayment, setDeliveryData } from 'store/Cart/slice';
+import Payment from 'components/Payment';
+import { IDeliveryData } from 'interfaces/IDeliveryData';
+import { FormInputSm } from './styles';
 import {
   ButtonBeige,
   CustomModal,
@@ -8,18 +16,6 @@ import {
   InputsContainer,
   ModalFormContainer,
 } from 'global/styles/GlobalStyledComponents';
-import { FormInputSm } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/store';
-import {
-  closeCheckout,
-  openPayment,
-  RequestData,
-  setDeliveryData,
-} from 'store/Cart/slice';
-import Payment from 'components/Payment';
-import { useForm } from 'react-hook-form';
-import InputMask from 'react-input-mask';
 
 const Checkout = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
@@ -27,7 +23,7 @@ const Checkout = ({ isOpen, onClose }) => {
     (state: RootState) => state.cart.isCheckoutOpen
   );
 
-  const { register, handleSubmit, reset, watch } = useForm<RequestData>();
+  const { register, handleSubmit, reset, watch } = useForm<IDeliveryData>();
 
   const handleCloseCheckout = () => {
     dispatch(closeCheckout());
@@ -36,7 +32,7 @@ const Checkout = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleToPayment = (data: RequestData) => {
+  const handleToPayment = (data: IDeliveryData) => {
     dispatch(
       setDeliveryData({
         receiver: data.receiver,
@@ -77,10 +73,10 @@ const Checkout = ({ isOpen, onClose }) => {
                 />
               </FormInputLabel>
               <FormInputLabel>
-                <label htmlFor="address">Endereço</label>
+                <label htmlFor="address.description">Endereço</label>
                 <FormInput
                   type="text"
-                  {...register('address', { required: true })}
+                  {...register('address.description', { required: true })}
                 />
               </FormInputLabel>
               <FormInputLabel>

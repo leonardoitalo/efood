@@ -1,36 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ICartState } from 'interfaces/ICartState';
 import { IDishe } from 'interfaces/IDishe';
 
-interface CartState {
-  dishes: IDishe[];
-  isCartOpen: boolean;
-  isCheckoutOpen: boolean;
-  isPaymentOpen: boolean;
-  isConfirmMessageOpen: boolean;
-  deliveryData: RequestData | null;
-  paymentData: PaymentData | null;
-}
-
-export interface RequestData {
-  receiver: string;
-  address: {
-    description: string; // Altere 'address' para 'description'
-    city: string;
-    zipCode: string; // Altere 'cep' para 'zipCode'
-    number: number; // Altere 'number' para 'number: number'
-    complement?: string;
-  };
-}
-
-export interface PaymentData {
-  name: string;
-  numberCard: string;
-  cvv: string;
-  month: string;
-  year: string;
-}
-
-const initialState: CartState = {
+const initialState: ICartState = {
   dishes: [],
   isCartOpen: false,
   isCheckoutOpen: false,
@@ -38,6 +10,7 @@ const initialState: CartState = {
   isConfirmMessageOpen: false,
   deliveryData: null,
   paymentData: null,
+  orderId: '',
 };
 
 const cartSlice = createSlice({
@@ -50,11 +23,14 @@ const cartSlice = createSlice({
     removeDishe: (state, action: PayloadAction<number>) => {
       state.dishes = state.dishes.filter((dish) => dish.id !== action.payload);
     },
-    setDeliveryData(state, action: PayloadAction<CartState['deliveryData']>) {
+    setDeliveryData(state, action: PayloadAction<ICartState['deliveryData']>) {
       state.deliveryData = action.payload;
     },
-    setPaymentData(state, action: PayloadAction<CartState['paymentData']>) {
+    setIPaymentData(state, action: PayloadAction<ICartState['paymentData']>) {
       state.paymentData = action.payload;
+    },
+    setOrderId(state, action: PayloadAction<ICartState['orderId']>) {
+      state.orderId = action.payload;
     },
     openCart: (state) => {
       state.isCartOpen = true;
@@ -96,6 +72,7 @@ export const {
   openConfirmMessage,
   closeConfirmMessage,
   setDeliveryData,
-  setPaymentData,
+  setIPaymentData,
+  setOrderId,
 } = cartSlice.actions;
 export default cartSlice.reducer;

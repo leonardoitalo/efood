@@ -10,6 +10,8 @@ const ConfirmMessage = () => {
     (state: RootState) => state.cart.isConfirmMessageOpen
   );
 
+  const orderId = useSelector((state: RootState) => state.cart.orderId);
+
   const handleCloseConfirmMessage = () => {
     dispatch(closeConfirmMessage());
   };
@@ -18,7 +20,7 @@ const ConfirmMessage = () => {
     <CustomModal flexEnd isOpen={isConfirmMessageOpen}>
       <ConfirmMessageContainer>
         <div>
-          <h4>Pedido realizado - ORDER_ID</h4>
+          <h4>Pedido realizado - {orderId}</h4>
         </div>
         <ConfirmMessageText>
           <p>

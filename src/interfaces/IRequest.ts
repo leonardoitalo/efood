@@ -1,6 +1,7 @@
 import { IDishe } from './IDishe';
 
 export interface IRequest {
+  orderId: string;
   products: IDishe[];
   delivery: {
     receiver: string;
