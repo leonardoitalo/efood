@@ -11,27 +11,50 @@ import {
 import { FormInputSm } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/store';
-import { closeCheckout, openPayment } from 'store/Cart/slice'; // Ação para fechar o checkout
+import {
+  closeCheckout,
+  openPayment,
+  RequestData,
+  setDeliveryData,
+} from 'store/Cart/slice';
 import Payment from 'components/Payment';
+import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 
 const Checkout = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const isCheckoutOpen = useSelector(
     (state: RootState) => state.cart.isCheckoutOpen
-  ); // Estado do checkout
+  );
+
+  const { register, handleSubmit, reset, watch } = useForm<RequestData>();
 
   const handleCloseCheckout = () => {
     dispatch(closeCheckout());
     if (onClose) {
-      onClose(); // Se houver uma função de fechamento passada via props, ela também é executada
+      onClose();
     }
   };
 
-  const handleToPayment = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+  const handleToPayment = (data: RequestData) => {
+    dispatch(
+      setDeliveryData({
+        receiver: data.receiver,
+        address: {
+          description: data.address.description,
+          city: data.address.city,
+          zipCode: data.address.zipCode,
+          number: data.address.number,
+          complement: data.address.complement || '',
+        },
+      })
+    );
     dispatch(closeCheckout());
     dispatch(openPayment());
+    reset(); // Limpa os campos do formulário
   };
+
+  console.log(watch());
 
   return (
     <>
@@ -41,46 +64,62 @@ const Checkout = ({ isOpen, onClose }) => {
         onClose={handleCloseCheckout}
       >
         <ModalFormContainer>
-          <Form action="">
+          <Form onSubmit={handleSubmit(handleToPayment)}>
             <div>
               <h4>Entrega</h4>
             </div>
             <InputsContainer>
               <FormInputLabel>
-                <label htmlFor="name">Quem irá receber</label>
-                <FormInput type="text" />
+                <label htmlFor="receiver">Quem irá receber</label>
+                <FormInput
+                  type="text"
+                  {...register('receiver', { required: true })}
+                />
               </FormInputLabel>
               <FormInputLabel>
-                <label htmlFor="name">Endereço</label>
-                <FormInput type="text" />
+                <label htmlFor="address">Endereço</label>
+                <FormInput
+                  type="text"
+                  {...register('address', { required: true })}
+                />
               </FormInputLabel>
               <FormInputLabel>
-                <label htmlFor="name">Cidade</label>
-                <FormInput type="text" />
+                <label htmlFor="address.city">Cidade</label>
+                <FormInput
+                  type="text"
+                  {...register('address.city', { required: true })}
+                />
               </FormInputLabel>
 
               <FormInputSm>
                 <FormInputLabel>
-                  <label htmlFor="name">CEP</label>
-                  <FormInput type="text" />
+                  <label htmlFor="address.zipCode">CEP</label>
+                  <InputMask
+                    mask="99999-999"
+                    {...register('address.zipCode')}
+                    type="text"
+                  />
                 </FormInputLabel>
                 <FormInputLabel>
-                  <label htmlFor="name">Número</label>
-                  <FormInput type="text" />
+                  <label htmlFor="address.number">Número</label>
+                  <FormInput
+                    type="text"
+                    {...register('address.number', { required: true })}
+                  />
                 </FormInputLabel>
               </FormInputSm>
 
               <FormInputLabel>
-                <label htmlFor="name">Complemento (opcional)</label>
-                <FormInput type="text" />
+                <label htmlFor="address.complement">
+                  Complemento (opcional)
+                </label>
+                <FormInput type="text" {...register('address.complement')} />
               </FormInputLabel>
             </InputsContainer>
 
             <FormButtonContainer>
-              <ButtonBeige onClick={handleToPayment}>
-                Continuar com o pagamento
-              </ButtonBeige>
-              <ButtonBeige onClick={handleCloseCheckout}>
+              <ButtonBeige type="submit">Continuar com o pagamento</ButtonBeige>
+              <ButtonBeige type="button" onClick={handleCloseCheckout}>
                 Voltar para o carrinho
               </ButtonBeige>
             </FormButtonContainer>
