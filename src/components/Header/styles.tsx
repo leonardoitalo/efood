@@ -7,14 +7,18 @@ export const HeaderContainer = styled.header`
   height: 180px;
   background-image: url('/imgs/Vector.png');
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 290px;
   align-items: center;
-  padding: 0 12.5vw 0 12.5vw;
 
   @media (max-width: 800px) {
     flex-direction: column;
     justify-content: space-around;
   }
+`;
+
+export const HeaderImg = styled.div`
+  min-width: 125px;
 `;
 
 export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
@@ -25,9 +29,9 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   height: 280px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 25px 0 32px 12.5vw;
+  padding: 25px 32px;
   color: ${colors.white};
   z-index: 0;
 
@@ -46,6 +50,9 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
   h2 {
     z-index: 2;
     font-size: 2rem;
+    text-align: flex-start;
+    max-width: 1016px;
+    width: 100%;
   }
 
   h1 {

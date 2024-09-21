@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const DisheContainer = styled.div`
   width: 320px;
-  height: auto;
+  height: 338px;
   background-color: ${colors.pink};
   padding: 8px;
   color: ${colors.beigeDark};

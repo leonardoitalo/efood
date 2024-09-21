@@ -4,6 +4,7 @@ import {
   HeaderContainer,
   HeroRestaurantContainer,
   HeaderTitle,
+  HeaderImg,
 } from './styles';
 import Cart from 'components/Cart';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,9 +29,9 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
         <div>
           <HeaderTitle to={'/'}>Restaurantes</HeaderTitle>
         </div>
-        <div>
+        <HeaderImg>
           <img src="/imgs/logo.png" alt="logo efood" />
-        </div>
+        </HeaderImg>
         <div>
           <HeaderCartLength onClick={handleOpenCart}>
             {dishes.length} produto(s) no carrinho
@@ -38,10 +39,12 @@ const Header = ({ restaurantType, restaurantTitle, img }: IHeader) => {
           <Cart /> {/* O estado do carrinho será controlado pelo Redux */}
         </div>
       </HeaderContainer>
-      <HeroRestaurantContainer $bgImg={img}>
-        <h1>{restaurantType}</h1>
-        <h2>{restaurantTitle}</h2>
-      </HeroRestaurantContainer>
+      <div>
+        <HeroRestaurantContainer $bgImg={img}>
+          <h1>{restaurantType}</h1>
+          <h2>{restaurantTitle}</h2>
+        </HeroRestaurantContainer>
+      </div>
     </>
   );
 };

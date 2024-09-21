@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FormInputSm = styled.div`
   width: auto;
-  height: 66px;
+  height: auto;
   display: flex;
   gap: 42px;
 
