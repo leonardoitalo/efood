@@ -11,9 +11,14 @@ export const HeaderContainer = styled.header`
   gap: 290px;
   align-items: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1100px) {
+    gap: 120px;
+  }
+
+  @media (max-width: 750px) {
     flex-direction: column;
     justify-content: space-around;
+    gap: 0;
   }
 `;
 
@@ -53,6 +58,10 @@ export const HeroRestaurantContainer = styled.div<IContainerImgProps>`
     text-align: flex-start;
     max-width: 1016px;
     width: 100%;
+
+    @media (max-width: 1100px) {
+      max-width: 680px;
+    }
   }
 
   h1 {
