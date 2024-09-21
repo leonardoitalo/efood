@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const RestaurantContainer = styled.div`
   width: 488px;
-  height: 398px;
+  height: auto;
   padding: 8px;
   color: ${colors.pink};
 `;
@@ -21,6 +21,7 @@ export const ImgContainer = styled.div<IContainerImgProps>`
 `;
 
 export const InfoContainer = styled.div`
+  height: 212px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -68,6 +69,11 @@ export const InfoText = styled.p`
   font-weight: 400;
   line-height: 22px;
   text-align: left;
+  height: 8em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 `;
 
 export const Rating = styled.div`

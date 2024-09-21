@@ -1,81 +1,166 @@
-import { ButtonBeige, CustomModal } from 'global/styles/GlobalStyledComponents';
+import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store/store';
 import {
-  CheckoutContainer,
+  closeCheckout,
+  openCart,
+  openPayment,
+  setDeliveryData,
+} from 'store/Cart/slice';
+import Payment from 'components/Payment';
+import { IDeliveryData } from 'interfaces/IDeliveryData';
+import { FormInputSm } from './styles';
+import {
+  ButtonBeige,
+  CustomModal,
   Form,
   FormButtonContainer,
   FormInput,
-  FormInputContainerMid,
   FormInputLabel,
   InputsContainer,
-} from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/store';
-import { closeCheckout } from 'store/Cart/slice'; // Ação para fechar o checkout
+  ModalFormContainer,
+} from 'global/styles/GlobalStyledComponents';
 
-const Checkout = ({ isOpen, onClose }) => {
+const Checkout = () => {
   const dispatch = useDispatch();
   const isCheckoutOpen = useSelector(
     (state: RootState) => state.cart.isCheckoutOpen
-  ); // Estado do checkout
+  );
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<IDeliveryData>();
 
   const handleCloseCheckout = () => {
     dispatch(closeCheckout());
-    if (onClose) {
-      onClose(); // Se houver uma função de fechamento passada via props, ela também é executada
-    }
+    dispatch(openCart());
   };
 
+  const handleToPayment = (data: IDeliveryData) => {
+    dispatch(
+      setDeliveryData({
+        receiver: data.receiver,
+        address: {
+          description: data.address.description,
+          city: data.address.city,
+          zipCode: data.address.zipCode,
+          number: data.address.number,
+          complement: data.address.complement || '',
+        },
+      })
+    );
+    dispatch(closeCheckout());
+    dispatch(openPayment());
+    reset(); // Limpa os campos do formulário
+  };
+
+  console.log(watch());
+
   return (
-    <CustomModal
-      flexEnd
-      isOpen={isCheckoutOpen || isOpen}
-      onClose={handleCloseCheckout}
-    >
-      <CheckoutContainer>
-        <Form action="">
-          <div>
-            <h4>Entrega</h4>
-          </div>
-          <InputsContainer>
-            <FormInputLabel>
-              <label htmlFor="name">Quem irá receber</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-            <FormInputLabel>
-              <label htmlFor="name">Endereço</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-            <FormInputLabel>
-              <label htmlFor="name">Cidade</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-
-            <FormInputContainerMid>
+    <>
+      <CustomModal
+        flexEnd
+        isOpen={isCheckoutOpen}
+        onClose={handleCloseCheckout}
+      >
+        <ModalFormContainer>
+          <Form onSubmit={handleSubmit(handleToPayment)}>
+            <div>
+              <h4>Entrega</h4>
+            </div>
+            <InputsContainer>
               <FormInputLabel>
-                <label htmlFor="name">CEP</label>
-                <FormInput type="text" />
+                <label htmlFor="receiver">Quem irá receber</label>
+                <FormInput
+                  type="text"
+                  {...register('receiver', {
+                    required: 'Nome do recebedor é obrigatório',
+                  })}
+                />
+                {errors.receiver && <span>{errors.receiver.message}</span>}
               </FormInputLabel>
               <FormInputLabel>
-                <label htmlFor="name">Número</label>
-                <FormInput type="text" />
+                <label htmlFor="address.description">Endereço</label>
+                <FormInput
+                  type="text"
+                  {...register('address.description', {
+                    required: 'Endereço é obrigatório',
+                  })}
+                />
+                {errors.address?.description && (
+                  <span>{errors.address.description.message}</span>
+                )}
               </FormInputLabel>
-            </FormInputContainerMid>
+              <FormInputLabel>
+                <label htmlFor="address.city">Cidade</label>
+                <FormInput
+                  type="text"
+                  {...register('address.city', {
+                    required: 'Cidade é obrigatória',
+                  })}
+                />
+                {errors.address?.city && (
+                  <span>{errors.address.city.message}</span>
+                )}
+              </FormInputLabel>
 
-            <FormInputLabel>
-              <label htmlFor="name">Complemento (opcional)</label>
-              <FormInput type="text" />
-            </FormInputLabel>
-          </InputsContainer>
+              <FormInputSm>
+                <FormInputLabel>
+                  <label htmlFor="address.zipCode">CEP</label>
+                  <InputMask
+                    mask="99999-999"
+                    {...register('address.zipCode', {
+                      required: 'CEP é obrigatório',
+                      pattern: {
+                        value: /^[0-9]{5}-[0-9]{3}$/,
+                        message: 'Formato de CEP inválido',
+                      },
+                    })}
+                    type="text"
+                  />
+                  {errors.address?.zipCode && (
+                    <span>{errors.address.zipCode.message}</span>
+                  )}
+                </FormInputLabel>
+                <FormInputLabel>
+                  <label htmlFor="address.number">Número</label>
+                  <FormInput
+                    type="text"
+                    {...register('address.number', {
+                      required: 'Número é obrigatório',
+                    })}
+                  />
+                  {errors.address?.number && (
+                    <span>{errors.address.number.message}</span>
+                  )}
+                </FormInputLabel>
+              </FormInputSm>
 
-          <FormButtonContainer>
-            <ButtonBeige>Continuar com o pagamento</ButtonBeige>
-            <ButtonBeige onClick={handleCloseCheckout}>
-              Voltar para o carrinho
-            </ButtonBeige>
-          </FormButtonContainer>
-        </Form>
-      </CheckoutContainer>
-    </CustomModal>
+              <FormInputLabel>
+                <label htmlFor="address.complement">
+                  Complemento (opcional)
+                </label>
+                <FormInput type="text" {...register('address.complement')} />
+              </FormInputLabel>
+            </InputsContainer>
+
+            <FormButtonContainer>
+              <ButtonBeige type="submit">Continuar com o pagamento</ButtonBeige>
+              <ButtonBeige type="button" onClick={handleCloseCheckout}>
+                Voltar para o carrinho
+              </ButtonBeige>
+            </FormButtonContainer>
+          </Form>
+        </ModalFormContainer>
+      </CustomModal>
+
+      <Payment />
+    </>
   );
 };
 

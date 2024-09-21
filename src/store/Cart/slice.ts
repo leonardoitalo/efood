@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ICartState } from 'interfaces/ICartState';
 import { IDishe } from 'interfaces/IDishe';
 
-interface CartState {
-  dishes: IDishe[];
-  isCartOpen: boolean;
-  isCheckoutOpen: boolean;
-}
-
-const initialState: CartState = {
+const initialState: ICartState = {
   dishes: [],
   isCartOpen: false,
   isCheckoutOpen: false,
+  isPaymentOpen: false,
+  isConfirmMessageOpen: false,
+  deliveryData: null,
+  paymentData: null,
+  orderId: '',
 };
 
 const cartSlice = createSlice({
@@ -23,9 +23,17 @@ const cartSlice = createSlice({
     removeDishe: (state, action: PayloadAction<number>) => {
       state.dishes = state.dishes.filter((dish) => dish.id !== action.payload);
     },
+    setDeliveryData(state, action: PayloadAction<ICartState['deliveryData']>) {
+      state.deliveryData = action.payload;
+    },
+    setIPaymentData(state, action: PayloadAction<ICartState['paymentData']>) {
+      state.paymentData = action.payload;
+    },
+    setOrderId(state, action: PayloadAction<ICartState['orderId']>) {
+      state.orderId = action.payload;
+    },
     openCart: (state) => {
       state.isCartOpen = true;
-      state.isCheckoutOpen = false; // Ao abrir o carrinho, o checkout é fechado
     },
     closeCart: (state) => {
       state.isCartOpen = false;
@@ -36,15 +44,34 @@ const cartSlice = createSlice({
     closeCheckout: (state) => {
       state.isCheckoutOpen = false;
     },
+    openPayment: (state) => {
+      state.isPaymentOpen = true;
+    },
+    closePayment: (state) => {
+      state.isPaymentOpen = false;
+    },
+    openConfirmMessage: (state) => {
+      state.isConfirmMessageOpen = true;
+    },
+    closeConfirmMessage: (state) => {
+      state.isConfirmMessageOpen = false;
+    },
   },
 });
 
 export const {
   addDishe,
   removeDishe,
-  closeCart,
-  closeCheckout,
   openCart,
+  closeCart,
   openCheckout,
+  closeCheckout,
+  openPayment,
+  closePayment,
+  openConfirmMessage,
+  closeConfirmMessage,
+  setDeliveryData,
+  setIPaymentData,
+  setOrderId,
 } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -5,10 +5,11 @@ import { useState } from 'react';
 import DisheModal from 'components/DisheModal';
 import { IDishe } from 'interfaces/IDishe';
 import { useGetDishesQuery } from 'services/api';
+import Loader from 'components/Loader';
 
 const DishesList = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: dishes } = useGetDishesQuery(id!);
+  const { data: dishes, isLoading } = useGetDishesQuery(id!);
   const [showModal, setShowModal] = useState(false);
   const [selectedDishe, setSelectedDishe] = useState<IDishe | null>(null);
 
@@ -21,6 +22,8 @@ const DishesList = () => {
     setShowModal(false);
     setSelectedDishe(null);
   };
+
+  if (isLoading) return <Loader />;
 
   return (
     <DishesListContainer>
