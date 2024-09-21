@@ -35,7 +35,12 @@ const Payment = () => {
   );
   const dishes = useSelector((state: RootState) => state.cart.dishes);
 
-  const { register, handleSubmit, reset } = useForm<IPaymentData>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<IPaymentData>();
 
   const isPaymentOpen = useSelector(
     (state: RootState) => state.cart.isPaymentOpen
@@ -97,8 +102,11 @@ const Payment = () => {
                 <label htmlFor="">Nome do cartao</label>
                 <FormInput
                   type="text"
-                  {...register('name', { required: true })}
+                  {...register('name', {
+                    required: 'Nome do cartão é obrigatório',
+                  })}
                 />
+                {errors.name && <span>{errors.name.message}</span>}
               </FormInputLabel>
 
               <FormInputLg>
@@ -107,16 +115,20 @@ const Payment = () => {
                   <InputMask
                     mask="9999 9999 9999 9999"
                     type="text"
-                    {...register('numberCard', { required: true })}
+                    {...register('numberCard', {
+                      required: 'Número do cartão é obrigatório',
+                    })}
                   />
+                  {errors.name && <span>{errors.numberCard?.message}</span>}
                 </FormInputLabel>
                 <FormInputLabel>
                   <label htmlFor="cvv">CVV</label>
                   <InputMask
                     mask="999"
                     type="text"
-                    {...register('cvv', { required: true })}
+                    {...register('cvv', { required: 'CVV é obrigatório' })}
                   />
+                  {errors.name && <span>{errors.cvv?.message}</span>}
                 </FormInputLabel>
               </FormInputLg>
 
@@ -126,16 +138,22 @@ const Payment = () => {
                   <InputMask
                     mask="99"
                     type="text"
-                    {...register('month', { required: true })}
+                    {...register('month', {
+                      required: 'Mês de vencimento é obrigatório',
+                    })}
                   />
+                  {errors.name && <span>{errors.month?.message}</span>}
                 </FormInputLabel>
                 <FormInputLabel>
                   <label htmlFor="number">Ano de vencimento</label>
                   <InputMask
                     mask="9999"
                     type="year"
-                    {...register('year', { required: true })}
+                    {...register('year', {
+                      required: 'Ano de vencimento é obrigatório',
+                    })}
                   />
+                  {errors.name && <span>{errors.year?.message}</span>}
                 </FormInputLabel>
               </FormInputSm>
             </InputsContainer>

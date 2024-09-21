@@ -56,7 +56,7 @@ const Checkout = () => {
     );
     dispatch(closeCheckout());
     dispatch(openPayment());
-    reset(); // Limpa os campos do formulário
+    reset();
   };
 
   console.log(watch());
