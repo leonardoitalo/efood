@@ -1,19 +1,13 @@
 import Restaurant from 'components/Restaurant';
 import { RestaurantsListContainer } from './styles';
-import { IRestaurant } from 'interfaces/IRestaurant';
-import useFetchData from 'global/hooks/useFetchData';
+
+import { useGetRestaurantQuery } from 'services/api';
+import Loader from 'components/Loader';
 
 const RestaurantsList = () => {
-  const {
-    data: restaurants,
-    loading,
-    error,
-  } = useFetchData<IRestaurant[]>(
-    'https://fake-api-tau.vercel.app/api/efood/restaurantes'
-  );
+  const { data: restaurants, isLoading } = useGetRestaurantQuery();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (isLoading) return <Loader />;
   if (!restaurants) return <p>No data available</p>;
 
   return (

@@ -19,7 +19,7 @@ const Dishe = ({ nome, descricao, foto, alt, openModal }: IDishe) => {
         <DisheInfo>
           <DisheTitle>{nome}</DisheTitle>
           <DisheText>{descricao}</DisheText>
-          <ButtonBeige onClick={openModal}>Adicionar ao carrinho</ButtonBeige>
+          <ButtonBeige onClick={openModal}>Mais Detalhes</ButtonBeige>
         </DisheInfo>
       </DisheContainer>
     </>
