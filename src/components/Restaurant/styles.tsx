@@ -7,6 +7,10 @@ export const RestaurantContainer = styled.div`
   height: auto;
   padding: 8px;
   color: ${colors.pink};
+
+  @media (max-width: 550px) {
+    width: auto;
+  }
 `;
 
 export const ImgContainer = styled.div<IContainerImgProps>`

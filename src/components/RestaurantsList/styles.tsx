@@ -13,8 +13,7 @@ export const RestaurantsListContainer = styled.main`
   background-color: ${colors.beige};
   justify-content: center;
 
-  @media (max-width: 900px) {
-    // Ajuste para telas menores
-    grid-template-columns: 1fr; // Exibe 1 item por linha em telas menores
+  @media (max-width: 1155px) {
+    grid-template-columns: 1fr;
   }
 `;
